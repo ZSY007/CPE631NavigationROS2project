@@ -17,6 +17,21 @@ For the detailed project write-up and implementation summary, see:
 - [codefiles/README.md](codefiles/README.md)
 - [codefiles/CONTRIBUTIONS.md](codefiles/CONTRIBUTIONS.md)
 
+## Based on / 参考环境
+
+本仓库基于 SIT Robotics 提供的室内人类交互环境（The Environment），并以其为基础进行修改和实验。参考仓库：
+
+https://github.com/SIT-Robotics-and-Automation-Laboratory/CPE631-Navigation-ROS2
+
+The Environment: An indoor human environment has been created, see the following
+Github site on Human Robot Interaction Environment:
+https://github.com/SIT-Robotics-and-Automation-Laboratory/CPE631-Navigation-ROS2
+
+The Problem: You need to define your own motion planning problem as to navigate the
+robot in the given environment. Clearly present your problem formulation in your final
+report, state the assumptions on the robot (such as onboard sensors, etc.) and the
+environment (such as map availability, etc.).
+
 ## What is in this repo
 
 - `cpe631_ros2/` - ROS 2 Python nodes used in the simulator.
