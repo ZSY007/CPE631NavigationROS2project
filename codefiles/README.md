@@ -34,42 +34,46 @@ git clone https://github.com/SIT-Robotics-and-Automation-Laboratory/CPE631-Navig
 cd cpe631_ros2_pkg
 ```
 
+If you prefer a shorter directory name, you can replace `cpe631_ros2_pkg` with `cpe631_ros2`, but keep that name consistent in the later commands.
+
 ---
 
 ## Step 2 — Copy This Project's Files into the Base Repo
 
-Run all commands from the **root of the cloned base repo**:
+Run these commands from the **root of this project checkout**, then copy into the cloned base repo. In other words, keep both repositories available side by side: this repository provides the files under `codefiles/`, and the cloned base repository receives them.
+
+If your checkout is named differently, replace `../CPE631-Navigation-ROS2-main` with the actual path to this project.
 
 ```bash
 # Python nodes
-cp codefiles/social_nav_node.py     cpe631_ros2/social_nav_node.py
-cp codefiles/ped_pose_extractor.py  cpe631_ros2/ped_pose_extractor.py
-cp codefiles/peds.py                cpe631_ros2/peds.py
-cp codefiles/data_collector.py      cpe631_ros2/data_collector.py
-cp codefiles/goal_sender.py         cpe631_ros2/goal_sender.py
+cp ../CPE631-Navigation-ROS2-main/codefiles/social_nav_node.py     cpe631_ros2/social_nav_node.py
+cp ../CPE631-Navigation-ROS2-main/codefiles/ped_pose_extractor.py  cpe631_ros2/ped_pose_extractor.py
+cp ../CPE631-Navigation-ROS2-main/codefiles/peds.py                cpe631_ros2/peds.py
+cp ../CPE631-Navigation-ROS2-main/codefiles/data_collector.py      cpe631_ros2/data_collector.py
+cp ../CPE631-Navigation-ROS2-main/codefiles/goal_sender.py         cpe631_ros2/goal_sender.py
 
 # C++ D* Lite plugin
-cp codefiles/plugin/dstar_planner.cpp  src/dstar_planner.cpp
-cp codefiles/plugin/cpe631_ros2_dstar_planner.xml  cpe631_ros2_dstar_planner.xml
+cp ../CPE631-Navigation-ROS2-main/codefiles/plugin/dstar_planner.cpp  src/dstar_planner.cpp
+cp ../CPE631-Navigation-ROS2-main/codefiles/plugin/cpe631_ros2_dstar_planner.xml  cpe631_ros2_dstar_planner.xml
 mkdir -p include/cpe631_ros2
-cp codefiles/plugin/include/cpe631_ros2/dstar_planner.hpp  include/cpe631_ros2/dstar_planner.hpp
+cp ../CPE631-Navigation-ROS2-main/codefiles/plugin/include/cpe631_ros2/dstar_planner.hpp  include/cpe631_ros2/dstar_planner.hpp
 
 # Nav2 parameter files
-cp codefiles/param/*.yaml  param/
-cp codefiles/param/*.xml   param/
+cp ../CPE631-Navigation-ROS2-main/codefiles/param/*.yaml  param/
+cp ../CPE631-Navigation-ROS2-main/codefiles/param/*.xml   param/
 
 # Launch files
-cp codefiles/launch/cafe.launch.py          launch/cafe.launch.py
-cp codefiles/launch/cafe_dynamic.launch.py  launch/cafe_dynamic.launch.py
+cp ../CPE631-Navigation-ROS2-main/codefiles/launch/cafe.launch.py          launch/cafe.launch.py
+cp ../CPE631-Navigation-ROS2-main/codefiles/launch/cafe_dynamic.launch.py  launch/cafe_dynamic.launch.py
 
 # Map (if not already present)
 mkdir -p maps
-cp codefiles/maps/cafe.yaml  maps/cafe.yaml
-cp codefiles/maps/cafe.pgm   maps/cafe.pgm
+cp ../CPE631-Navigation-ROS2-main/codefiles/maps/cafe.yaml  maps/cafe.yaml
+cp ../CPE631-Navigation-ROS2-main/codefiles/maps/cafe.pgm   maps/cafe.pgm
 
 # Updated build system files
-cp codefiles/build_files/CMakeLists.txt  CMakeLists.txt
-cp codefiles/build_files/package.xml     package.xml
+cp ../CPE631-Navigation-ROS2-main/codefiles/build_files/CMakeLists.txt  CMakeLists.txt
+cp ../CPE631-Navigation-ROS2-main/codefiles/build_files/package.xml     package.xml
 ```
 
 ---
@@ -170,7 +174,8 @@ ros2 run cpe631_ros2 goal_sender --ros-args \
 
 | File | Contents |
 |---|---|
-| `4.csv` | Main Nav2 simulation results — all 7 modes, 25 runs each |
+| `5.csv` | Main Nav2 simulation results — baseline, dynamic, dynamic_astar, dynamic_dstar, social, social_astar, dstar_social — 25 runs each |
+| `social_smac_tuned_25.csv` | social_smac results — 25 runs, tuned parameters, EXPERIMENT_TIMEOUT=500 |
 | `a_dstar_results_25.csv` | Standalone A\* vs D\* Lite results — 25 runs each |
 
 > All `time_s` values are **ROS/Gazebo simulation seconds**, not wall-clock time.
