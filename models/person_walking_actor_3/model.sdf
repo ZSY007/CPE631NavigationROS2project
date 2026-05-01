@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <actor name="person_walking_actor_3">
+    <skin>
+      <filename>model://person_walking/meshes/walking.dae</filename>
+      <scale>1.0</scale>
+    </skin>
+    <animation name="walk">
+      <filename>model://person_walking/meshes/walking.dae</filename>
+      <interpolate_x>true</interpolate_x>
+    </animation>
+    <script>
+      <loop>true</loop>
+      <auto_start>true</auto_start>
+      <trajectory id="0" type="walk">
+        <waypoint>
+          <time>0</time>
+          <pose>2.0 -4.5 0.0 0 0 3.04</pose>
+        </waypoint>
+        <waypoint>
+          <time>6.3</time>
+          <pose>-3.0 -4.0 0.0 0 0 3.04</pose>
+        </waypoint>
+        <waypoint>
+          <time>12.6</time>
+          <pose>2.0 -4.5 0.0 0 0 -0.10</pose>
+        </waypoint>
+      </trajectory>
+    </script>
+  </actor>
+</sdf>

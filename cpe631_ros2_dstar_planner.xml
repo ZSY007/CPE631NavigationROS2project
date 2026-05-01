@@ -1,0 +1,5 @@
+<library path="cpe631_ros2_dstar_planner">
+  <class type="cpe631_ros2::DStarPlanner" base_class_type="nav2_core::GlobalPlanner">
+    <description>D* family global planner for the CPE631 social navigation experiments.</description>
+  </class>
+</library>

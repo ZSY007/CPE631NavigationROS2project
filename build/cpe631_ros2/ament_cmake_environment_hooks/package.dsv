@@ -1,0 +1,4 @@
+source;share/cpe631_ros2/local_setup.bash
+source;share/cpe631_ros2/local_setup.dsv
+source;share/cpe631_ros2/local_setup.sh
+source;share/cpe631_ros2/local_setup.zsh

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/code/ROS/or/CPE631-Navigation-ROS2-main/param/**)",
+      "Read(//d/code/ROS/or/CPE631-Navigation-ROS2-main/cpe631_ros2/**)",
+      "Read(//tmp/**)",
+      "Bash(ls /tmp/sender_baseline_*.log /tmp/sender_dynamic_*.log /tmp/sender_social_*.log)",
+      "Bash(ls /tmp/collector_baseline_*.log /tmp/collector_dynamic_*.log /tmp/collector_social_*.log)",
+      "Bash(awk 'NR>=1967 && NR<=339730' \"d:/code/ROS/12/CPE631-Navigation-ROS2-main/ros_experiment_logs_20260426_032616.log\")",
+      "Bash(python3 -)"
+    ]
+  }
+}

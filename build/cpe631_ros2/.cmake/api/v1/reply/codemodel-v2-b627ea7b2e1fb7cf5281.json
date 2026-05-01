@@ -1,0 +1,106 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-a0a2d65030630b7a5214.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "cpe631_ros2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_cpe631_ros2_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_cpe631_ros2_egg-7862c66b71256a073840.json",
+					"name" : "ament_cmake_python_build_cpe631_ros2_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_symlink_cpe631_ros2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_symlink_cpe631_ros2-fde68ea5f436a23e4baa.json",
+					"name" : "ament_cmake_python_symlink_cpe631_ros2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_symlink_cpe631_ros2_setup::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_symlink_cpe631_ros2_setup-1234d83632601ac40f13.json",
+					"name" : "ament_cmake_python_symlink_cpe631_ros2_setup",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cpe631_ros2_dstar_planner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpe631_ros2_dstar_planner-ee7e5ba368c8e1e26998.json",
+					"name" : "cpe631_ros2_dstar_planner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cpe631_ros2_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpe631_ros2_uninstall-c0339acb9e793c69044f.json",
+					"name" : "cpe631_ros2_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-a05495e5a34a368b5488.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/dx/CPE631-Navigation-ROS2-main/build/cpe631_ros2",
+		"source" : "/home/dx/CPE631-Navigation-ROS2-main"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

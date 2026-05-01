@@ -1,0 +1,1 @@
+geometry_msgs;nav_msgs;nav2_core;nav2_costmap_2d;nav2_util;pluginlib;rclcpp;rclcpp_lifecycle;tf2_ros;rclpy;action_msgs;sensor_msgs;std_msgs;std_srvs;python3-numpy;ros_gz_interfaces;ros_gz_sim;ros_gz_bridge;ros_gz_image;launch;launch_ros;ament_index_python;nav2_bringup;nav2_common;nav2_smac_planner;slam_toolbox;turtlebot3_navigation2
