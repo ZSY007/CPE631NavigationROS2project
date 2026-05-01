@@ -252,13 +252,14 @@ class PedestrianTracker:
                     mean = mean + offset
 
             # ── Heading 惯性约束：每步从 prev_heading 向目标 heading 最多转 max_heading_change ──
+            # prev_heading 是上一步已钳制的方向；heading 是当前速度方向（目标）。
+            # 每步向目标旋转但不超过 max_heading_change，避免预测方向在远期突变。
             if speed >= min_motion_speed:
                 cross = (prev_heading[0] * heading[1]
                          - prev_heading[1] * heading[0])
-                dot = float(np.clip(
-                    prev_heading[0] * heading[0] + prev_heading[1] * heading[1],
-                    -1.0, 1.0,
-                ))
+                dot = float(
+                    prev_heading[0] * heading[0] + prev_heading[1] * heading[1]
+                )
                 angle_diff = math.atan2(cross, dot)
                 if abs(angle_diff) > max_heading_change:
                     step = max_heading_change * (1.0 if angle_diff > 0 else -1.0)
@@ -570,19 +571,8 @@ class SocialNavNode(Node):
 
     def _odom_callback(self, msg: Odometry) -> None:
         """获取机器人速度；位姿/朝向由 /amcl_pose 提供，避免 odom/map 混用。"""
-        q = msg.pose.pose.orientation
-        siny_cosp = 2.0 * (q.w * q.z + q.x * q.y)
-        cosy_cosp = 1.0 - 2.0 * (q.y * q.y + q.z * q.z)
-        yaw = math.atan2(siny_cosp, cosy_cosp)
-
-        if self.robot_pos is None:
-            self.robot_pos = np.array([
-                msg.pose.pose.position.x,
-                msg.pose.pose.position.y,
-            ], dtype=float)
-            self.robot_heading = np.array([math.cos(yaw), math.sin(yaw)])
-
-        # 把 body-frame 线速度转到 world frame
+        # 只使用 /odom 的速度。位姿必须来自 map frame (/amcl_pose 或 TF)，
+        # 否则 robot_pos 会在 odom/map 坐标系之间短暂错位。
         vx = msg.twist.twist.linear.x
         vy = msg.twist.twist.linear.y
         cos_y, sin_y = self.robot_heading

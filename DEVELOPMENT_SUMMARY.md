@@ -110,5 +110,5 @@ The project documentation was reorganized into clearer English files:
 | --- | ---: | ---: |
 | `social` | 29 | 20 |
 | `social_astar` | 29 | 22 |
-| `dstar_social` | 28 | 23 |
+| `social_dstar` | 28 | 23 |
 | `social_smac` | 39 | 19 |

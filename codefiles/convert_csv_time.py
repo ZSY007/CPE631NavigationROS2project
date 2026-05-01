@@ -9,14 +9,14 @@ time factor RTF takes approximately:
     wall_time_s = sim_time_s / RTF
 
 Examples:
-    python3 codefiles/convert_csv_time.py /home/dx/ros2_ws/A/dstar_social_2x.csv \
-        -o /home/dx/ros2_ws/A/dstar_social_2x_time_equiv.csv \
+    python3 codefiles/convert_csv_time.py /home/dx/ros2_ws/A/social_dstar_2x.csv \
+        -o /home/dx/ros2_ws/A/social_dstar_2x_time_equiv.csv \
         -t old_0p3x=0.3 -t actual_0p843x=0.843 \
-        --source-rtf 0.843 --final-only --only-mode dstar_social
+        --source-rtf 0.843 --final-only --only-mode social_dstar
 
     # If the CSV is mixed, convert only the speed-changed mode:
     python3 codefiles/convert_csv_time.py mixed.csv \
-        -t old_0p3x=0.3 --final-only --only-mode dstar_social
+        -t old_0p3x=0.3 --final-only --only-mode social_dstar
 """
 
 from __future__ import annotations
@@ -53,7 +53,7 @@ def parse_args() -> argparse.Namespace:
         metavar="LABEL=RTF",
         help=(
             "Target achieved real-time factor. Can be repeated. "
-            "Examples: old_0p3x=0.3, dstar_social_2x=0.843, 1.0"
+            "Examples: old_0p3x=0.3, social_dstar_2x=0.843, 1.0"
         ),
     )
     parser.add_argument(

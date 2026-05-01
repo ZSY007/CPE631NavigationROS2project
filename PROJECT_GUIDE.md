@@ -128,7 +128,7 @@ Supported modes:
 - `social_astar`: pedestrians enabled, A* plus social costmap.
 - `social_smac`: pedestrians enabled, Smac Hybrid A* plus local/global social costmaps.
 - `dynamic_dstar`: pedestrians enabled, D* planner, no social costmap.
-- `dstar_social`: pedestrians enabled, D* planner plus social costmap.
+- `social_dstar`: pedestrians enabled, D* planner plus social costmap.
 
 Run selected modes:
 
@@ -164,7 +164,7 @@ Current row counts:
 | --- | ---: | ---: |
 | `social` | 29 | 20 |
 | `social_astar` | 29 | 22 |
-| `dstar_social` | 28 | 23 |
+| `social_dstar` | 28 | 23 |
 | `social_smac` | 39 | 19 |
 
 Use `time_s` for algorithm comparison because it is simulation time. Use the wall-clock columns only when discussing how long the experiments took to run on the machine.

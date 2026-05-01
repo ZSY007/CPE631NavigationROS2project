@@ -149,7 +149,7 @@ ros2 param get /local_costmap/local_costmap plugins
 | Social | `social_navigation:=true enable_peds:=true` | `mode:=social` |
 | Social A* | `social_navigation:=true enable_peds:=true planner_variant:=astar` | `mode:=social_astar` |
 | Social Smac | `social_navigation:=true enable_peds:=true planner_variant:=smac` | `mode:=social_smac` |
-| D* Social | `social_navigation:=true enable_peds:=true planner_variant:=dstar` | `mode:=dstar_social` |
+| D* Social | `social_navigation:=true enable_peds:=true planner_variant:=dstar` | `mode:=social_dstar` |
 
 ## Batch Runs
 

@@ -54,8 +54,20 @@ bool sameKey(
   const std::pair<double, double> & a,
   const std::pair<double, double> & b)
 {
-  return std::abs(a.first - b.first) < 1e-9 &&
-         std::abs(a.second - b.second) < 1e-9;
+  const auto invalid = [](const std::pair<double, double> & key) {
+      return std::isinf(key.first) && std::isinf(key.second);
+    };
+  if (invalid(a) || invalid(b)) {
+    return false;
+  }
+
+  const auto same_value = [](double lhs, double rhs) {
+      if (std::isinf(lhs) || std::isinf(rhs)) {
+        return lhs == rhs;
+      }
+      return std::abs(lhs - rhs) < 1e-9;
+    };
+  return same_value(a.first, b.first) && same_value(a.second, b.second);
 }
 
 }  // namespace

@@ -1,2 +1,2 @@
 experiment,mode,result,attempt,path_length_m,time_s,encounters,personal_violations,intimate_violations,min_ped_dist_m,mean_angular_acceleration
-1,dstar_social,timeout,0,25.725,240.45,40,45,3,0.112,0.2935
+1,social_dstar,timeout,0,25.725,240.45,40,45,3,0.112,0.2935

@@ -156,7 +156,7 @@ ros2 run cpe631_ros2 goal_sender --ros-args \
 | `social` | NavFn (Dijkstra) | MPPI | Yes | `param/nav2_social_dynamic.yaml` |
 | `social_astar` | NavFn (A\* flag) | MPPI | Yes | `param/nav2_social_astar.yaml` |
 | `social_smac` | Smac Hybrid A\* | MPPI | Yes | `param/nav2_social_smac.yaml` |
-| `dstar_social` | D\* Lite plugin | MPPI | Yes | `param/nav2_social_dstar.yaml` |
+| `social_dstar` | D\* Lite plugin | MPPI | Yes | `param/nav2_social_dstar.yaml` |
 
 ---
 
@@ -164,7 +164,7 @@ ros2 run cpe631_ros2 goal_sender --ros-args \
 
 | File | Contents |
 |---|---|
-| `5.csv` | Main Nav2 simulation results — baseline, dynamic, dynamic_astar, dynamic_dstar, social, social_astar, dstar_social — 25 runs each |
+| `5.csv` | Main Nav2 simulation results — baseline, dynamic, dynamic_astar, dynamic_dstar, social, social_astar, social_dstar — 25 runs each |
 | `social_smac_tuned_25.csv` | social_smac results — 25 runs, tuned parameters, EXPERIMENT_TIMEOUT=500 |
 
 > All `time_s` values are **ROS/Gazebo simulation seconds**, not wall-clock time.

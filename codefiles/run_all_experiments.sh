@@ -69,8 +69,8 @@ NAV2_READY_TIMEOUT="${NAV2_READY_TIMEOUT:-180}"
 if [[ -z "${CSV_FILE:-}" ]]; then
     if [[ "${MODES//[[:space:]]/}" == "social_smac" ]]; then
         CSV_FILE="${WS_ROOT}/social_smac_${RUNS_PER_MODE}.csv"
-    elif [[ "${MODES//[[:space:]]/}" == "dstar_social" || "${MODES//[[:space:]]/}" == "social_dstar" ]]; then
-        CSV_FILE="${WS_ROOT}/dstar_social_${RUNS_PER_MODE}.csv"
+    elif [[ "${MODES//[[:space:]]/}" == "social_dstar" ]]; then
+        CSV_FILE="${WS_ROOT}/social_dstar_${RUNS_PER_MODE}.csv"
     else
         CSV_FILE="${WS_ROOT}/experiment_results_v3.csv"
     fi
@@ -578,7 +578,7 @@ EXPERIMENTS=(
     "social        true  true   true   navfn"
     "social_astar  true  true   true   astar"
     "social_smac   true  true   true   smac"
-    "dstar_social  true  true   true   dstar"
+    "social_dstar  true  true   true   dstar"
 )
 
 if [[ -n "$MODES" ]]; then
@@ -588,7 +588,6 @@ if [[ -n "$MODES" ]]; then
         read -r exp_mode _ <<< "$exp_line"
         for requested_mode in "${REQUESTED_MODES[@]}"; do
             requested_mode="${requested_mode//[[:space:]]/}"
-            [[ "$requested_mode" == "social_dstar" ]] && requested_mode="dstar_social"
             if [[ "$exp_mode" == "$requested_mode" ]]; then
                 FILTERED_EXPERIMENTS+=("$exp_line")
                 break
