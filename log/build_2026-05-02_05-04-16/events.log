@@ -1,0 +1,163 @@
+[0.000000] (-) TimerEvent: {}
+[0.000476] (cpe631_ros2) JobQueued: {'identifier': 'cpe631_ros2', 'dependencies': OrderedDict()}
+[0.000497] (cpe631_ros2) JobStarted: {'identifier': 'cpe631_ros2'}
+[0.008865] (cpe631_ros2) JobProgress: {'identifier': 'cpe631_ros2', 'progress': 'cmake'}
+[0.009728] (cpe631_ros2) JobProgress: {'identifier': 'cpe631_ros2', 'progress': 'build'}
+[0.011780] (cpe631_ros2) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/dx/CPE631-Navigation-ROS2-main/build/cpe631_ros2', '--', '-j4', '-l4'], 'cwd': '/home/dx/CPE631-Navigation-ROS2-main/build/cpe631_ros2', 'env': OrderedDict({'USER': 'dx', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '2', 'HOME': '/home/dx', 'OLDPWD': '/home/dx/CPE631-Navigation-ROS2-main/codefiles', 'DESKTOP_SESSION': 'ubuntu', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MODES': 'baseline,dynamic,dynamic_astar,dynamic_dstar', 'SYSTEMD_EXEC_PID': '1725', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'CSV_FILE': '/home/dx/CPE631-Navigation-ROS2-main/experiment_results_v3.csv', 'WAYLAND_DISPLAY': 'wayland-0', 'RUNS_PER_MODE': '10', 'LOGNAME': 'dx', 'DESKTOP_AUTOSTART_ID': '106a33285e37f03750177771264727396100000017250016', '_': '/usr/bin/colcon', 'APPEND_CSV': '1', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome\\x2dsession\\x2dmanager.slice/gnome-session-manager@ubuntu.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'dx', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/dx-VMware-Virtual-Platform:@/tmp/.ICE-unix/1725,unix/dx-VMware-Virtual-Platform:/tmp/.ICE-unix/1725', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/43465efc_5d59_4d31_858c_aa9242f34055', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'zh_CN.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Q6UMO3', 'GNOME_TERMINAL_SERVICE': ':1.89', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/dx/CPE631-Navigation-ROS2-main/build/cpe631_ros2', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'QTWEBENGINE_DICTIONARIES_PATH': '/usr/share/hunspell-bdic/', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600'}), 'shell': False}
+[0.099687] (-) TimerEvent: {}
+[0.172625] (cpe631_ros2) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_cpe631_ros2\n'}
+[0.173037] (cpe631_ros2) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_cpe631_ros2_setup\n'}
+[0.199997] (-) TimerEvent: {}
+[0.236632] (cpe631_ros2) StdoutLine: {'line': b'[100%] Built target cpe631_ros2_dstar_planner\n'}
+[0.300108] (-) TimerEvent: {}
+[0.311338] (cpe631_ros2) StdoutLine: {'line': b'running egg_info\n'}
+[0.317082] (cpe631_ros2) StdoutLine: {'line': b'writing cpe631_ros2.egg-info/PKG-INFO\n'}
+[0.317408] (cpe631_ros2) StdoutLine: {'line': b'writing dependency_links to cpe631_ros2.egg-info/dependency_links.txt\n'}
+[0.317567] (cpe631_ros2) StdoutLine: {'line': b'writing top-level names to cpe631_ros2.egg-info/top_level.txt\n'}
+[0.341716] (cpe631_ros2) StdoutLine: {'line': b"reading manifest file 'cpe631_ros2.egg-info/SOURCES.txt'\n"}
+[0.342600] (cpe631_ros2) StdoutLine: {'line': b"writing manifest file 'cpe631_ros2.egg-info/SOURCES.txt'\n"}
+[0.361848] (cpe631_ros2) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_cpe631_ros2_egg\n'}
+[0.369661] (cpe631_ros2) CommandEnded: {'returncode': 0}
+[0.370859] (cpe631_ros2) JobProgress: {'identifier': 'cpe631_ros2', 'progress': 'install'}
+[0.376828] (cpe631_ros2) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/dx/CPE631-Navigation-ROS2-main/build/cpe631_ros2'], 'cwd': '/home/dx/CPE631-Navigation-ROS2-main/build/cpe631_ros2', 'env': OrderedDict({'USER': 'dx', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '2', 'HOME': '/home/dx', 'OLDPWD': '/home/dx/CPE631-Navigation-ROS2-main/codefiles', 'DESKTOP_SESSION': 'ubuntu', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MODES': 'baseline,dynamic,dynamic_astar,dynamic_dstar', 'SYSTEMD_EXEC_PID': '1725', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'CSV_FILE': '/home/dx/CPE631-Navigation-ROS2-main/experiment_results_v3.csv', 'WAYLAND_DISPLAY': 'wayland-0', 'RUNS_PER_MODE': '10', 'LOGNAME': 'dx', 'DESKTOP_AUTOSTART_ID': '106a33285e37f03750177771264727396100000017250016', '_': '/usr/bin/colcon', 'APPEND_CSV': '1', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome\\x2dsession\\x2dmanager.slice/gnome-session-manager@ubuntu.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'dx', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/dx-VMware-Virtual-Platform:@/tmp/.ICE-unix/1725,unix/dx-VMware-Virtual-Platform:/tmp/.ICE-unix/1725', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/43465efc_5d59_4d31_858c_aa9242f34055', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'zh_CN.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.Q6UMO3', 'GNOME_TERMINAL_SERVICE': ':1.89', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/dx/CPE631-Navigation-ROS2-main/build/cpe631_ros2', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'QTWEBENGINE_DICTIONARIES_PATH': '/usr/share/hunspell-bdic/', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600'}), 'shell': False}
+[0.382567] (cpe631_ros2) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.383180] (cpe631_ros2) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.383994] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/pythonpath.sh\n'}
+[0.384234] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/pythonpath.dsv\n'}
+[0.385040] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2-0.1.0-py3.12.egg-info/PKG-INFO\n'}
+[0.385255] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2-0.1.0-py3.12.egg-info/SOURCES.txt\n'}
+[0.385493] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2-0.1.0-py3.12.egg-info/dependency_links.txt\n'}
+[0.385705] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2-0.1.0-py3.12.egg-info/top_level.txt\n'}
+[0.386626] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/__init__.py\n'}
+[0.386879] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/data_collector.py\n'}
+[0.387077] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/goal_sender.py\n'}
+[0.387309] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/map_republisher.py\n'}
+[0.387543] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/ped_pose_extractor.py\n'}
+[0.387674] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/peds.py\n'}
+[0.387824] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/social_nav_node.py\n'}
+[0.387931] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/teleop.py\n'}
+[0.388192] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2//cpe631_ros2_dstar_planner.xml\n'}
+[0.389156] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/launch/__pycache__/cafe.launch.cpython-312.pyc\n'}
+[0.389321] (cpe631_ros2) StdoutLine: {'line': b'-- Symlinking: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/launch/__pycache__/cafe_dynamic.launch.cpython-312.pyc\n'}
+[0.395720] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/launch/cafe.launch.py\n'}
+[0.395962] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/launch/cafe_dynamic.launch.py\n'}
+[0.396222] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/launch/teleop.launch.py\n'}
+[0.396763] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/worlds/cafe.world\n'}
+[0.400300] (-) TimerEvent: {}
+[0.403811] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/Target/model.config\n'}
+[0.403931] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/Target/model.sdf\n'}
+[0.405641] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_10.jpg\n'}
+[0.405846] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_2.jpg\n'}
+[0.406050] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_21.jpg\n'}
+[0.406328] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_22.jpg\n'}
+[0.406527] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_23.jpg\n'}
+[0.406697] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_24.jpg\n'}
+[0.406925] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_25.jpg\n'}
+[0.407092] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_26.jpg\n'}
+[0.407261] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_28.jpg\n'}
+[0.407491] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_29.jpg\n'}
+[0.407661] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_30.jpg\n'}
+[0.407834] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_31.jpg\n'}
+[0.408001] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_34.jpg\n'}
+[0.408175] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_35.jpg\n'}
+[0.409143] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/materials/textures/__auto_37.jpg\n'}
+[0.410573] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/meshes/cafe.dae\n'}
+[0.410829] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/model.config\n'}
+[0.411023] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe/model.sdf\n'}
+[0.412410] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe_table/materials/textures/Maple.jpg\n'}
+[0.412707] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe_table/materials/textures/Wood_Floor_Dark.jpg\n'}
+[0.413029] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe_table/meshes/cafe_table.dae\n'}
+[0.413229] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe_table/model-1_4.sdf\n'}
+[0.413477] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe_table/model.config\n'}
+[0.413707] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/cafe_table/model.sdf\n'}
+[0.414723] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/eyebrow001-unmodified.png\n'}
+[0.415049] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/eyebrow001.png\n'}
+[0.415289] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/green_eye.png\n'}
+[0.415547] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/jeans01_normals.png\n'}
+[0.415767] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/jeans_basic_diffuse.png\n'}
+[0.415980] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/male02_diffuse_black-unmodified.png\n'}
+[0.416225] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/male02_diffuse_black.png\n'}
+[0.416481] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/teeth.png\n'}
+[0.416772] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/tshirt02_normals.png\n'}
+[0.417027] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/tshirt02_texture.png\n'}
+[0.417291] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/materials/textures/young_lightskinned_male_diffuse.png\n'}
+[0.417701] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/meshes/standing.dae\n'}
+[0.417948] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/model.config\n'}
+[0.418172] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_standing/model.sdf\n'}
+[0.418790] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/eyebrow001-unmodified.png\n'}
+[0.419014] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/eyebrow001.png\n'}
+[0.419254] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/green_eye.png\n'}
+[0.419747] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/jeans01_normals.png\n'}
+[0.419900] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/jeans_basic_diffuse.png\n'}
+[0.420180] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/male02_diffuse_black-unmodified.png\n'}
+[0.420436] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/male02_diffuse_black.png\n'}
+[0.420650] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/teeth.png\n'}
+[0.420898] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/tshirt02_normals.png\n'}
+[0.421127] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/tshirt02_texture.png\n'}
+[0.421342] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/materials/textures/young_lightskinned_male_diffuse.png\n'}
+[0.421744] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/meshes/walking.dae\n'}
+[0.421977] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/model.config\n'}
+[0.422175] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking/model.sdf\n'}
+[0.422519] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking_actor/model.sdf\n'}
+[0.422869] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking_actor_1/model.sdf\n'}
+[0.423220] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking_actor_2/model.sdf\n'}
+[0.423570] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/person_walking_actor_3/model.sdf\n'}
+[0.423906] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/turtlebot3_burger/model-1_4.sdf\n'}
+[0.424098] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/turtlebot3_burger/model.config\n'}
+[0.424319] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/models/turtlebot3_burger/model.sdf\n'}
+[0.424777] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/rviz/gmapping.rviz\n'}
+[0.424894] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/rviz/navigation.rviz\n'}
+[0.425689] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/custom_bt.xml\n'}
+[0.425834] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_burger.yaml\n'}
+[0.426011] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_dynamic_astar.yaml\n'}
+[0.426226] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_dynamic_conservative.yaml\n'}
+[0.426439] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_dynamic_dstar.yaml\n'}
+[0.426679] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_social_astar.yaml\n'}
+[0.426897] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_social_dstar.yaml\n'}
+[0.427113] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_social_dynamic.yaml\n'}
+[0.427317] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_social_smac.yaml\n'}
+[0.427536] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/social_pose_bridge.yaml\n'}
+[0.427741] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/turtlebot3_burger_bridge_local.yaml\n'}
+[0.428230] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/maps/cafe.pgm\n'}
+[0.428383] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/maps/cafe.yaml\n'}
+[0.428972] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/include/cpe631_ros2/dstar_planner.hpp\n'}
+[0.429416] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/libcpe631_ros2_dstar_planner.so\n'}
+[0.429541] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/cpe631_ros2_dstar_planner.xml\n'}
+[0.429802] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/library_path.sh\n'}
+[0.430041] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/library_path.dsv\n'}
+[0.430902] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/ament_index/resource_index/package_run_dependencies/cpe631_ros2\n'}
+[0.431355] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/ament_index/resource_index/parent_prefix_path/cpe631_ros2\n'}
+[0.431664] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/ament_prefix_path.sh\n'}
+[0.431947] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/ament_prefix_path.dsv\n'}
+[0.432199] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/path.sh\n'}
+[0.432492] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/environment/path.dsv\n'}
+[0.432764] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/local_setup.bash\n'}
+[0.433022] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/local_setup.sh\n'}
+[0.433284] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/local_setup.zsh\n'}
+[0.433574] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/local_setup.dsv\n'}
+[0.433675] (cpe631_ros2) StdoutLine: {'line': b'-- Symlinking: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/package.dsv\n'}
+[0.441148] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/ament_index/resource_index/packages/cpe631_ros2\n'}
+[0.441521] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/ament_index/resource_index/nav2_core__pluginlib__plugin/cpe631_ros2\n'}
+[0.442187] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.442449] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.442734] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.442996] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/cmake/cpe631_ros2Config.cmake\n'}
+[0.443207] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/cmake/cpe631_ros2Config-version.cmake\n'}
+[0.443331] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date symlink: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/package.xml\n'}
+[0.496133] (cpe631_ros2) StdoutLine: {'line': b"Listing '/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2'...\n"}
+[0.496256] (cpe631_ros2) StdoutLine: {'line': b"Compiling '/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/data_collector.py'...\n"}
+[0.496329] (cpe631_ros2) StdoutLine: {'line': b"Compiling '/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/goal_sender.py'...\n"}
+[0.496369] (cpe631_ros2) StdoutLine: {'line': b"Compiling '/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/ped_pose_extractor.py'...\n"}
+[0.496408] (cpe631_ros2) StdoutLine: {'line': b"Compiling '/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/peds.py'...\n"}
+[0.496445] (cpe631_ros2) StdoutLine: {'line': b"Compiling '/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/social_nav_node.py'...\n"}
+[0.499918] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/cpe631_teleop\n'}
+[0.500079] (cpe631_ros2) StdoutLine: {'line': b'-- Installing: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/cpe631_peds\n'}
+[0.500210] (cpe631_ros2) StdoutLine: {'line': b'-- Up-to-date: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/cpe631_map_republisher\n'}
+[0.500342] (-) TimerEvent: {}
+[0.500429] (cpe631_ros2) StdoutLine: {'line': b'-- Installing: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/ped_pose_extractor\n'}
+[0.500586] (cpe631_ros2) StdoutLine: {'line': b'-- Installing: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/social_nav_node\n'}
+[0.500669] (cpe631_ros2) StdoutLine: {'line': b'-- Installing: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/data_collector\n'}
+[0.500842] (cpe631_ros2) StdoutLine: {'line': b'-- Installing: /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/goal_sender\n'}
+[0.502228] (cpe631_ros2) CommandEnded: {'returncode': 0}
+[0.526279] (cpe631_ros2) JobEnded: {'identifier': 'cpe631_ros2', 'rc': 0}
+[0.526929] (-) EventReactorShutdown: {}

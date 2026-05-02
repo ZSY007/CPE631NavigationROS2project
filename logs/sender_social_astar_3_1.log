@@ -1,0 +1,17 @@
+[INFO] [1777698734.142069275] [goal_sender]: GoalSender ready: 5 goals, action=navigate_to_pose, topic=/experiment_goal_pose
+[INFO] [1777698737.143265108] [goal_sender]: Nav2 action server ready. Starting route.
+[INFO] [1777698737.143793565] [goal_sender]: Sent route goal 1/5: x=0.50, y=-6.50, yaw=2.08
+[INFO] [1777698737.145053783] [goal_sender]: Goal 1/5 accepted
+[INFO] [1777698761.696256833] [goal_sender]: Reached route goal 1/5 [SUCCEEDED]
+[INFO] [1777698762.268509023] [goal_sender]: Sent route goal 2/5: x=-3.50, y=0.00, yaw=0.89
+[INFO] [1777698762.271189928] [goal_sender]: Goal 2/5 accepted
+[INFO] [1777698785.220437224] [goal_sender]: Reached route goal 2/5 [SUCCEEDED]
+[INFO] [1777698785.867940031] [goal_sender]: Sent route goal 3/5: x=2.50, y=6.00, yaw=-2.75
+[INFO] [1777698785.871589581] [goal_sender]: Goal 3/5 accepted
+[INFO] [1777698824.782468394] [goal_sender]: Reached route goal 3/5 [SUCCEEDED]
+[INFO] [1777698825.402471238] [goal_sender]: Sent route goal 4/5: x=-2.00, y=2.10, yaw=-1.10
+[INFO] [1777698825.408006115] [goal_sender]: Goal 4/5 accepted
+[ERROR] [1777699261.145333112] [goal_sender]: Experiment sim-time timeout (450.0s) reached!
+[ERROR] [1777699261.145930499] [goal_sender]: Route timeout at goal 4/5. Completed 3/5 goals.
+[INFO] [1777699261.148181440] [goal_sender]: Nav2 goal cancel request acknowledged.
+[ros2run]: Process exited with failure 4

@@ -1,0 +1,47 @@
+[INFO] [1777715765.834040877] [data_collector]: DataCollector ready  mode=dynamic  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777715765.834736270] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/dynamic_4groups_headless_10.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777715771.001916358] [data_collector]: Started experiment [dynamic]
+[WARN] [1777715771.175877575] [data_collector]: Personal space violation (<1.20m) +1, total=1
+[INFO] [1777715772.097603015] [data_collector]: Encounter (<1.0m) +1, total=1
+[WARN] [1777715800.017087570] [data_collector]: Personal space violation (<1.20m) +1, total=2
+[INFO] [1777715800.312900237] [data_collector]: Encounter (<1.0m) +1, total=2
+[WARN] [1777715800.967005227] [data_collector]: Intimate space violation (<0.45m) +1, total=1
+[WARN] [1777715811.135168880] [data_collector]: Personal space violation (<1.20m) +1, total=3
+[INFO] [1777715811.294388523] [data_collector]: Encounter (<1.0m) +1, total=3
+[WARN] [1777715812.235459652] [data_collector]: Intimate space violation (<0.45m) +1, total=2
+[WARN] [1777715824.940312297] [data_collector]: Personal space violation (<1.20m) +1, total=4
+[INFO] [1777715825.176698977] [data_collector]: Encounter (<1.0m) +1, total=4
+[WARN] [1777715830.281276469] [data_collector]: Personal space violation (<1.20m) +1, total=5
+[WARN] [1777715833.329333975] [data_collector]: Personal space violation (<1.20m) +1, total=6
+[INFO] [1777715833.508160861] [data_collector]: Encounter (<1.0m) +1, total=5
+[WARN] [1777715834.217187259] [data_collector]: Personal space violation (<1.20m) +1, total=7
+[WARN] [1777715834.505602193] [data_collector]: Intimate space violation (<0.45m) +1, total=3
+[WARN] [1777715836.851883557] [data_collector]: Personal space violation (<1.20m) +1, total=8
+[WARN] [1777715837.870375624] [data_collector]: Personal space violation (<1.20m) +1, total=9
+[WARN] [1777715838.803763835] [data_collector]: Personal space violation (<1.20m) +1, total=10
+[WARN] [1777715855.613559261] [data_collector]: Personal space violation (<1.20m) +1, total=11
+[WARN] [1777715861.788952865] [data_collector]: Personal space violation (<1.20m) +1, total=12
+[INFO] [1777715861.986436350] [data_collector]: Encounter (<1.0m) +1, total=6
+[WARN] [1777715862.788197222] [data_collector]: Intimate space violation (<0.45m) +1, total=4
+[WARN] [1777715872.120600859] [data_collector]: Personal space violation (<1.20m) +1, total=13
+[INFO] [1777715872.283275519] [data_collector]: Encounter (<1.0m) +1, total=7
+[WARN] [1777715873.479478171] [data_collector]: Personal space violation (<1.20m) +1, total=14
+[WARN] [1777715873.481445526] [data_collector]: Intimate space violation (<0.45m) +1, total=5
+[INFO] [1777715873.884377106] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777715873.884653087] [data_collector]: =======================================================
+[INFO] [1777715873.884866130] [data_collector]: Experiment #6 result: succeeded
+[INFO] [1777715873.885152976] [data_collector]:   Mode:                    dynamic
+[INFO] [1777715873.885439046] [data_collector]:   Attempt:                 0
+[INFO] [1777715873.885671177] [data_collector]:   Path length:             36.34 m
+[INFO] [1777715873.885893100] [data_collector]:   Navigation time:         95.10 s
+[INFO] [1777715873.886121059] [data_collector]:   Encounters (<1.0m):      7
+[INFO] [1777715873.886607171] [data_collector]:   Personal violations (<1.20m): 14
+[INFO] [1777715873.886887456] [data_collector]:   Intimate violations (<0.45m): 5
+[INFO] [1777715873.887135620] [data_collector]:   Min pedestrian dist:     0.245 m
+[INFO] [1777715873.887467380] [data_collector]:   Mean angular accel:      0.2546 rad/s²
+[INFO] [1777715873.887729757] [data_collector]: =======================================================
+[INFO] [1777715873.888177532] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/dynamic_4groups_headless_10.csv
+[INFO] [1777715873.888582580] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777715873.890355204] [data_collector]: SIGUSR1: experiment was not active, shutting down.

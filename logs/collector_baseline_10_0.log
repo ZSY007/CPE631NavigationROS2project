@@ -1,0 +1,21 @@
+[INFO] [1777713926.332347205] [data_collector]: DataCollector ready  mode=baseline  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777713926.333075005] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/dynamic_4groups_headless_10.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777713931.403657346] [data_collector]: Started experiment [baseline]
+[INFO] [1777713982.640578831] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777713982.641274450] [data_collector]: =======================================================
+[INFO] [1777713982.641514236] [data_collector]: Experiment #10 result: succeeded
+[INFO] [1777713982.641732462] [data_collector]:   Mode:                    baseline
+[INFO] [1777713982.641949201] [data_collector]:   Attempt:                 0
+[INFO] [1777713982.642274657] [data_collector]:   Path length:             36.64 m
+[INFO] [1777713982.642544819] [data_collector]:   Navigation time:         100.21 s
+[INFO] [1777713982.642784409] [data_collector]:   Encounters (<1.0m):      0
+[INFO] [1777713982.643026201] [data_collector]:   Personal violations (<1.20m): 0
+[INFO] [1777713982.643470826] [data_collector]:   Intimate violations (<0.45m): 0
+[INFO] [1777713982.643742143] [data_collector]:   Min pedestrian dist:     N/A
+[INFO] [1777713982.644142280] [data_collector]:   Mean angular accel:      0.2528 rad/s²
+[INFO] [1777713982.644467420] [data_collector]: =======================================================
+[INFO] [1777713982.644840572] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/dynamic_4groups_headless_10.csv
+[INFO] [1777713982.645267169] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777713982.646815352] [data_collector]: SIGUSR1: experiment was not active, shutting down.

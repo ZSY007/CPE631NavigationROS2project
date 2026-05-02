@@ -1,0 +1,18 @@
+[INFO] [1777713928.399615123] [goal_sender]: GoalSender ready: 5 goals, action=navigate_to_pose, topic=/experiment_goal_pose
+[INFO] [1777713931.400829169] [goal_sender]: Nav2 action server ready. Starting route.
+[INFO] [1777713931.401310303] [goal_sender]: Sent route goal 1/5: x=0.50, y=-6.50, yaw=2.08
+[INFO] [1777713931.401945344] [goal_sender]: Goal 1/5 accepted
+[INFO] [1777713941.793761097] [goal_sender]: Reached route goal 1/5 [SUCCEEDED]
+[INFO] [1777713942.043322929] [goal_sender]: Sent route goal 2/5: x=-3.50, y=0.00, yaw=0.89
+[INFO] [1777713942.045982195] [goal_sender]: Goal 2/5 accepted
+[INFO] [1777713951.846770262] [goal_sender]: Reached route goal 2/5 [SUCCEEDED]
+[INFO] [1777713952.095749112] [goal_sender]: Sent route goal 3/5: x=2.50, y=6.00, yaw=-2.75
+[INFO] [1777713952.097750434] [goal_sender]: Goal 3/5 accepted
+[INFO] [1777713963.650509018] [goal_sender]: Reached route goal 3/5 [SUCCEEDED]
+[INFO] [1777713963.905059145] [goal_sender]: Sent route goal 4/5: x=-2.00, y=2.10, yaw=-1.10
+[INFO] [1777713963.906580901] [goal_sender]: Goal 4/5 accepted
+[INFO] [1777713972.158998616] [goal_sender]: Reached route goal 4/5 [SUCCEEDED]
+[INFO] [1777713972.411274424] [goal_sender]: Sent route goal 5/5: x=2.00, y=-4.00, yaw=-2.16
+[INFO] [1777713972.415009681] [goal_sender]: Goal 5/5 accepted
+[INFO] [1777713982.063481058] [goal_sender]: Reached route goal 5/5 [SUCCEEDED]
+[INFO] [1777713982.313611425] [goal_sender]: Route succeeded.

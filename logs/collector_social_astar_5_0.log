@@ -1,0 +1,60 @@
+[INFO] [1777744859.203354019] [data_collector]: DataCollector ready  mode=social_astar  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777744859.204270214] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/social_4groups_headless_10.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777744864.260817190] [data_collector]: Started experiment [social_astar]
+[WARN] [1777744864.622007750] [data_collector]: Personal space violation (<1.20m) +1, total=1
+[INFO] [1777744865.740735243] [data_collector]: Encounter (<1.0m) +1, total=1
+[WARN] [1777744895.462462599] [data_collector]: Personal space violation (<1.20m) +1, total=2
+[INFO] [1777744895.627857110] [data_collector]: Encounter (<1.0m) +1, total=2
+[WARN] [1777744896.152682713] [data_collector]: Intimate space violation (<0.45m) +1, total=1
+[WARN] [1777744907.499728857] [data_collector]: Personal space violation (<1.20m) +1, total=3
+[INFO] [1777744907.675867169] [data_collector]: Encounter (<1.0m) +1, total=3
+[WARN] [1777744923.249318377] [data_collector]: Personal space violation (<1.20m) +1, total=4
+[INFO] [1777744923.416006202] [data_collector]: Encounter (<1.0m) +1, total=4
+[WARN] [1777744931.752329013] [data_collector]: Personal space violation (<1.20m) +2, total=6
+[INFO] [1777744931.847574020] [data_collector]: Encounter (<1.0m) +1, total=5
+[WARN] [1777744932.788212664] [data_collector]: Intimate space violation (<0.45m) +1, total=2
+[WARN] [1777744934.639976921] [data_collector]: Personal space violation (<1.20m) +1, total=7
+[WARN] [1777744934.813766918] [data_collector]: Personal space violation (<1.20m) +1, total=8
+[WARN] [1777744939.977285738] [data_collector]: Personal space violation (<1.20m) +1, total=9
+[INFO] [1777744940.350107831] [data_collector]: Encounter (<1.0m) +1, total=6
+[WARN] [1777744953.007662637] [data_collector]: Personal space violation (<1.20m) +1, total=10
+[WARN] [1777744961.196705177] [data_collector]: Personal space violation (<1.20m) +1, total=11
+[WARN] [1777744970.960072270] [data_collector]: Personal space violation (<1.20m) +1, total=12
+[INFO] [1777744971.390479329] [data_collector]: Encounter (<1.0m) +1, total=7
+[WARN] [1777744972.479278373] [data_collector]: Personal space violation (<1.20m) +1, total=13
+[INFO] [1777744976.474688473] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777744976.476401547] [data_collector]: =======================================================
+[INFO] [1777744976.476768267] [data_collector]: Experiment #5 result: succeeded
+[INFO] [1777744976.477717650] [data_collector]:   Mode:                    social_astar
+[INFO] [1777744976.479720582] [data_collector]:   Attempt:                 0
+[INFO] [1777744976.481388126] [data_collector]:   Path length:             36.22 m
+[INFO] [1777744976.481737181] [data_collector]:   Navigation time:         99.17 s
+[INFO] [1777744976.482776782] [data_collector]:   Encounters (<1.0m):      7
+[INFO] [1777744976.483221616] [data_collector]:   Personal violations (<1.20m): 13
+[INFO] [1777744976.483555603] [data_collector]:   Intimate violations (<0.45m): 2
+[INFO] [1777744976.483895696] [data_collector]:   Min pedestrian dist:     0.292 m
+[INFO] [1777744976.484253472] [data_collector]:   Mean angular accel:      0.2506 rad/s²
+[INFO] [1777744976.484622115] [data_collector]: =======================================================
+[INFO] [1777744976.485503254] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/social_4groups_headless_10.csv
+[INFO] [1777744976.486337612] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777744976.489778668] [data_collector]: SIGUSR1: experiment was not active, shutting down.
+Traceback (most recent call last):
+  File "/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/data_collector", line 411, in <module>
+    main()
+  File "/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/data_collector", line 391, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 918, in _spin_once_impl
+    raise handler.exception()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/task.py", line 286, in _execute_coroutine_step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 579, in handler
+    gc.trigger()
+    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'trigger'

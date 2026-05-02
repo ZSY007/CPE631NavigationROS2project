@@ -1,0 +1,46 @@
+[INFO] [1777702538.525382470] [data_collector]: DataCollector ready  mode=social_dstar  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777702538.526572629] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/experiment_results_v3.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777702543.656025031] [data_collector]: Started experiment [social_dstar]
+[WARN] [1777702543.664575288] [data_collector]: Personal space violation (<1.20m) +1, total=1
+[INFO] [1777702544.132553478] [data_collector]: Encounter (<1.0m) +1, total=1
+[WARN] [1777702574.350426258] [data_collector]: Personal space violation (<1.20m) +1, total=2
+[INFO] [1777702574.620262215] [data_collector]: Encounter (<1.0m) +1, total=2
+[WARN] [1777702574.976586036] [data_collector]: Intimate space violation (<0.45m) +1, total=1
+[WARN] [1777702584.832062230] [data_collector]: Personal space violation (<1.20m) +1, total=3
+[INFO] [1777702585.081110403] [data_collector]: Encounter (<1.0m) +1, total=3
+[WARN] [1777702600.010828145] [data_collector]: Personal space violation (<1.20m) +1, total=4
+[INFO] [1777702600.373711962] [data_collector]: Encounter (<1.0m) +1, total=4
+[WARN] [1777702609.375415453] [data_collector]: Personal space violation (<1.20m) +1, total=5
+[INFO] [1777702609.542128943] [data_collector]: Encounter (<1.0m) +1, total=5
+[WARN] [1777702610.930975874] [data_collector]: Intimate space violation (<0.45m) +1, total=2
+[INFO] [1777702617.504998940] [data_collector]: Encounter (<1.0m) +1, total=6
+[INFO] [1777702617.702704338] [data_collector]: Encounter (<1.0m) +1, total=7
+[WARN] [1777702621.957287320] [data_collector]: Intimate space violation (<0.45m) +1, total=3
+[WARN] [1777702622.361048427] [data_collector]: Intimate space violation (<0.45m) +1, total=4
+[WARN] [1777702623.643103492] [data_collector]: Intimate space violation (<0.45m) +1, total=5
+[WARN] [1777702634.174727807] [data_collector]: Personal space violation (<1.20m) +1, total=6
+[WARN] [1777702636.179574483] [data_collector]: Personal space violation (<1.20m) +1, total=7
+[INFO] [1777702636.527312666] [data_collector]: Encounter (<1.0m) +1, total=8
+[WARN] [1777702640.831599615] [data_collector]: Personal space violation (<1.20m) +1, total=8
+[INFO] [1777702641.272792705] [data_collector]: Encounter (<1.0m) +1, total=9
+[WARN] [1777702658.592594911] [data_collector]: Personal space violation (<1.20m) +1, total=9
+[INFO] [1777702659.395355616] [data_collector]: Encounter (<1.0m) +1, total=10
+[WARN] [1777702676.310262981] [data_collector]: Personal space violation (<1.20m) +1, total=10
+[INFO] [1777702678.210932119] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777702678.211216044] [data_collector]: =======================================================
+[INFO] [1777702678.211462635] [data_collector]: Experiment #4 result: succeeded
+[INFO] [1777702678.211686062] [data_collector]:   Mode:                    social_dstar
+[INFO] [1777702678.212726449] [data_collector]:   Attempt:                 1
+[INFO] [1777702678.213499559] [data_collector]:   Path length:             39.61 m
+[INFO] [1777702678.214169561] [data_collector]:   Navigation time:         118.07 s
+[INFO] [1777702678.214488927] [data_collector]:   Encounters (<1.0m):      10
+[INFO] [1777702678.214869012] [data_collector]:   Personal violations (<1.20m): 10
+[INFO] [1777702678.216898495] [data_collector]:   Intimate violations (<0.45m): 5
+[INFO] [1777702678.218081279] [data_collector]:   Min pedestrian dist:     0.067 m
+[INFO] [1777702678.218395560] [data_collector]:   Mean angular accel:      0.3013 rad/s²
+[INFO] [1777702678.218714224] [data_collector]: =======================================================
+[INFO] [1777702678.219154406] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/experiment_results_v3.csv
+[INFO] [1777702678.219488089] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777702678.222910360] [data_collector]: SIGUSR1: experiment was not active, shutting down.

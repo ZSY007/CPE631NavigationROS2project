@@ -103,3 +103,5 @@ experiment,mode,result,attempt,path_length_m,time_s,encounters,personal_violatio
 3,social_dstar,succeeded,0,36.351,116.17,4,11,3,0.107,0.2346
 4,social_dstar,succeeded,0,37.384,349.45,7,16,4,0.228,0.1367
 5,social_dstar,succeeded,0,36.636,92.05,7,9,5,0.04,0.2505
+1,baseline,succeeded,0,36.252,95.16,0,0,0,,0.2275
+2,baseline,succeeded,0,36.476,95.31,0,0,0,,0.1991

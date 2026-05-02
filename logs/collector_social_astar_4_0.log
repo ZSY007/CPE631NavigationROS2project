@@ -1,0 +1,77 @@
+[INFO] [1777744613.425790368] [data_collector]: DataCollector ready  mode=social_astar  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777744613.426944202] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/social_4groups_headless_10.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777744618.617234670] [data_collector]: Started experiment [social_astar]
+[WARN] [1777744618.796993726] [data_collector]: Personal space violation (<1.20m) +1, total=1
+[INFO] [1777744619.949665328] [data_collector]: Encounter (<1.0m) +1, total=1
+[WARN] [1777744649.666770261] [data_collector]: Personal space violation (<1.20m) +1, total=2
+[INFO] [1777744649.855390611] [data_collector]: Encounter (<1.0m) +1, total=2
+[WARN] [1777744658.659328554] [data_collector]: Personal space violation (<1.20m) +1, total=3
+[INFO] [1777744658.852194457] [data_collector]: Encounter (<1.0m) +1, total=3
+[WARN] [1777744659.780468468] [data_collector]: Intimate space violation (<0.45m) +1, total=1
+[WARN] [1777744666.054722062] [data_collector]: Personal space violation (<1.20m) +1, total=4
+[INFO] [1777744666.374813636] [data_collector]: Encounter (<1.0m) +1, total=4
+[WARN] [1777744667.373668191] [data_collector]: Intimate space violation (<0.45m) +1, total=2
+[WARN] [1777744674.466475428] [data_collector]: Personal space violation (<1.20m) +1, total=5
+[INFO] [1777744674.673503520] [data_collector]: Encounter (<1.0m) +1, total=5
+[WARN] [1777744675.558904562] [data_collector]: Intimate space violation (<0.45m) +1, total=3
+[WARN] [1777744681.527957813] [data_collector]: Personal space violation (<1.20m) +1, total=6
+[INFO] [1777744681.849034113] [data_collector]: Encounter (<1.0m) +1, total=6
+[WARN] [1777744682.841009231] [data_collector]: Intimate space violation (<0.45m) +1, total=4
+[WARN] [1777744690.108878860] [data_collector]: Personal space violation (<1.20m) +1, total=7
+[INFO] [1777744690.423683916] [data_collector]: Encounter (<1.0m) +1, total=7
+[WARN] [1777744691.282323594] [data_collector]: Intimate space violation (<0.45m) +1, total=5
+[WARN] [1777744697.120109252] [data_collector]: Personal space violation (<1.20m) +1, total=8
+[INFO] [1777744697.415832130] [data_collector]: Encounter (<1.0m) +1, total=8
+[WARN] [1777744698.466583890] [data_collector]: Intimate space violation (<0.45m) +1, total=6
+[WARN] [1777744705.374182559] [data_collector]: Personal space violation (<1.20m) +1, total=9
+[INFO] [1777744705.598829848] [data_collector]: Encounter (<1.0m) +1, total=9
+[WARN] [1777744706.317637904] [data_collector]: Intimate space violation (<0.45m) +1, total=7
+[WARN] [1777744712.520756288] [data_collector]: Personal space violation (<1.20m) +1, total=10
+[INFO] [1777744712.858906023] [data_collector]: Encounter (<1.0m) +1, total=10
+[WARN] [1777744714.032239793] [data_collector]: Intimate space violation (<0.45m) +1, total=8
+[WARN] [1777744721.529088562] [data_collector]: Personal space violation (<1.20m) +1, total=11
+[INFO] [1777744721.740278863] [data_collector]: Encounter (<1.0m) +1, total=11
+[WARN] [1777744722.631893655] [data_collector]: Intimate space violation (<0.45m) +1, total=9
+[WARN] [1777744729.273500580] [data_collector]: Personal space violation (<1.20m) +1, total=12
+[INFO] [1777744729.514464493] [data_collector]: Encounter (<1.0m) +1, total=12
+[WARN] [1777744738.356466058] [data_collector]: Personal space violation (<1.20m) +1, total=13
+[INFO] [1777744739.042387979] [data_collector]: Encounter (<1.0m) +1, total=13
+[WARN] [1777744741.237040497] [data_collector]: Personal space violation (<1.20m) +1, total=14
+[INFO] [1777744741.652888220] [data_collector]: Encounter (<1.0m) +1, total=14
+[WARN] [1777744742.940813720] [data_collector]: Intimate space violation (<0.45m) +1, total=10
+[WARN] [1777744743.513491111] [data_collector]: Personal space violation (<1.20m) +1, total=15
+[WARN] [1777744755.618838349] [data_collector]: Personal space violation (<1.20m) +1, total=16
+[INFO] [1777744755.828438774] [data_collector]: Encounter (<1.0m) +1, total=15
+[WARN] [1777744770.063079454] [data_collector]: Personal space violation (<1.20m) +2, total=18
+[INFO] [1777744770.798532988] [data_collector]: Encounter (<1.0m) +1, total=16
+[WARN] [1777744772.531953603] [data_collector]: Intimate space violation (<0.45m) +1, total=11
+[WARN] [1777744776.569996603] [data_collector]: Personal space violation (<1.20m) +1, total=19
+[INFO] [1777744777.439113715] [data_collector]: Encounter (<1.0m) +1, total=17
+[WARN] [1777744780.270445469] [data_collector]: Personal space violation (<1.20m) +1, total=20
+[INFO] [1777744780.575211555] [data_collector]: Encounter (<1.0m) +1, total=18
+[WARN] [1777744781.355964296] [data_collector]: Intimate space violation (<0.45m) +1, total=12
+[WARN] [1777744789.801590199] [data_collector]: Personal space violation (<1.20m) +1, total=21
+[INFO] [1777744790.175031761] [data_collector]: Encounter (<1.0m) +1, total=19
+[WARN] [1777744791.485438275] [data_collector]: Intimate space violation (<0.45m) +1, total=13
+[WARN] [1777744808.406081455] [data_collector]: Personal space violation (<1.20m) +1, total=22
+[WARN] [1777744826.474101211] [data_collector]: Personal space violation (<1.20m) +1, total=23
+[INFO] [1777744826.963884713] [data_collector]: Encounter (<1.0m) +1, total=20
+[WARN] [1777744828.028387931] [data_collector]: Intimate space violation (<0.45m) +1, total=14
+[INFO] [1777744828.535312337] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777744828.535702164] [data_collector]: =======================================================
+[INFO] [1777744828.536050093] [data_collector]: Experiment #4 result: succeeded
+[INFO] [1777744828.536475700] [data_collector]:   Mode:                    social_astar
+[INFO] [1777744828.536886693] [data_collector]:   Attempt:                 0
+[INFO] [1777744828.537289906] [data_collector]:   Path length:             36.24 m
+[INFO] [1777744828.538107043] [data_collector]:   Navigation time:         172.16 s
+[INFO] [1777744828.541266741] [data_collector]:   Encounters (<1.0m):      20
+[INFO] [1777744828.543859579] [data_collector]:   Personal violations (<1.20m): 23
+[INFO] [1777744828.544449018] [data_collector]:   Intimate violations (<0.45m): 14
+[INFO] [1777744828.545552693] [data_collector]:   Min pedestrian dist:     0.015 m
+[INFO] [1777744828.548816456] [data_collector]:   Mean angular accel:      0.2261 rad/s²
+[INFO] [1777744828.550979263] [data_collector]: =======================================================
+[INFO] [1777744828.551527402] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/social_4groups_headless_10.csv
+[INFO] [1777744828.552354327] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777744828.557643756] [data_collector]: SIGUSR1: experiment was not active, shutting down.

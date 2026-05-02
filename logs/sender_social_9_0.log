@@ -1,0 +1,16 @@
+[INFO] [1777742496.867555233] [goal_sender]: GoalSender ready: 5 goals, action=navigate_to_pose, topic=/experiment_goal_pose
+[INFO] [1777742499.868440338] [goal_sender]: Nav2 action server ready. Starting route.
+[INFO] [1777742499.868956875] [goal_sender]: Sent route goal 1/5: x=0.50, y=-6.50, yaw=2.08
+[INFO] [1777742499.869763903] [goal_sender]: Goal 1/5 accepted
+[INFO] [1777742523.233048326] [goal_sender]: Reached route goal 1/5 [SUCCEEDED]
+[INFO] [1777742523.694794907] [goal_sender]: Sent route goal 2/5: x=-3.50, y=0.00, yaw=0.89
+[INFO] [1777742523.698716043] [goal_sender]: Goal 2/5 accepted
+[INFO] [1777742553.050994934] [goal_sender]: Reached route goal 2/5 [SUCCEEDED]
+[INFO] [1777742553.630872089] [goal_sender]: Sent route goal 3/5: x=2.50, y=6.00, yaw=-2.75
+[INFO] [1777742553.632669275] [goal_sender]: Goal 3/5 accepted
+[INFO] [1777742607.896592322] [goal_sender]: Reached route goal 3/5 [SUCCEEDED]
+[INFO] [1777742608.371129442] [goal_sender]: Sent route goal 4/5: x=-2.00, y=2.10, yaw=-1.10
+[INFO] [1777742608.374579679] [goal_sender]: Goal 4/5 accepted
+[WARN] [1777742919.996946432] [goal_sender]: Goal 4/5 failed [ABORTED]
+[ERROR] [1777742919.998310026] [goal_sender]: Route aborted at goal 4/5. Completed 3/5 goals.
+[ros2run]: Process exited with failure 2

@@ -1,0 +1,69 @@
+[INFO] [1777741312.410431249] [data_collector]: DataCollector ready  mode=social  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777741312.411197434] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/social_4groups_headless_10.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777741317.373099168] [data_collector]: Started experiment [social]
+[WARN] [1777741318.301830765] [data_collector]: Personal space violation (<1.20m) +1, total=1
+[INFO] [1777741319.458601022] [data_collector]: Encounter (<1.0m) +1, total=1
+[WARN] [1777741348.836491985] [data_collector]: Personal space violation (<1.20m) +1, total=2
+[WARN] [1777741349.032016687] [data_collector]: Personal space violation (<1.20m) +1, total=3
+[WARN] [1777741349.220373888] [data_collector]: Personal space violation (<1.20m) +1, total=4
+[WARN] [1777741355.609233781] [data_collector]: Personal space violation (<1.20m) +1, total=5
+[INFO] [1777741355.708206385] [data_collector]: Encounter (<1.0m) +1, total=2
+[WARN] [1777741356.714777887] [data_collector]: Intimate space violation (<0.45m) +1, total=1
+[WARN] [1777741370.694650957] [data_collector]: Personal space violation (<1.20m) +1, total=6
+[INFO] [1777741370.897377741] [data_collector]: Encounter (<1.0m) +1, total=3
+[WARN] [1777741390.435110835] [data_collector]: Personal space violation (<1.20m) +1, total=7
+[WARN] [1777741393.984966430] [data_collector]: Personal space violation (<1.20m) +1, total=8
+[INFO] [1777741394.502385434] [data_collector]: Encounter (<1.0m) +1, total=4
+[WARN] [1777741397.130536565] [data_collector]: Intimate space violation (<0.45m) +1, total=2
+[INFO] [1777741400.822251759] [data_collector]: Encounter (<1.0m) +1, total=5
+[WARN] [1777741402.358071686] [data_collector]: Personal space violation (<1.20m) +1, total=9
+[WARN] [1777741402.458291546] [data_collector]: Intimate space violation (<0.45m) +1, total=3
+[WARN] [1777741402.847518165] [data_collector]: Intimate space violation (<0.45m) +1, total=4
+[WARN] [1777741404.884467792] [data_collector]: Personal space violation (<1.20m) +1, total=10
+[INFO] [1777741405.092799482] [data_collector]: Encounter (<1.0m) +1, total=6
+[WARN] [1777741406.216757275] [data_collector]: Intimate space violation (<0.45m) +1, total=5
+[WARN] [1777741407.244196462] [data_collector]: Intimate space violation (<0.45m) +1, total=6
+[WARN] [1777741410.706963021] [data_collector]: Personal space violation (<1.20m) +1, total=11
+[WARN] [1777741411.868119837] [data_collector]: Personal space violation (<1.20m) +1, total=12
+[WARN] [1777741436.504739099] [data_collector]: Personal space violation (<1.20m) +1, total=13
+[INFO] [1777741436.723955509] [data_collector]: Encounter (<1.0m) +1, total=7
+[WARN] [1777741437.474583727] [data_collector]: Intimate space violation (<0.45m) +1, total=7
+[WARN] [1777741450.646719521] [data_collector]: Personal space violation (<1.20m) +1, total=14
+[INFO] [1777741451.267819494] [data_collector]: Encounter (<1.0m) +1, total=8
+[INFO] [1777741451.995351821] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777741451.995905151] [data_collector]: =======================================================
+[INFO] [1777741451.997164501] [data_collector]: Experiment #2 result: succeeded
+[INFO] [1777741451.998797221] [data_collector]:   Mode:                    social
+[INFO] [1777741451.999134510] [data_collector]:   Attempt:                 0
+[INFO] [1777741451.999539079] [data_collector]:   Path length:             36.35 m
+[INFO] [1777741452.001207838] [data_collector]:   Navigation time:         95.42 s
+[INFO] [1777741452.001561823] [data_collector]:   Encounters (<1.0m):      8
+[INFO] [1777741452.008761263] [data_collector]:   Personal violations (<1.20m): 14
+[INFO] [1777741452.009313767] [data_collector]:   Intimate violations (<0.45m): 7
+[INFO] [1777741452.010338408] [data_collector]:   Min pedestrian dist:     0.020 m
+[INFO] [1777741452.010753745] [data_collector]:   Mean angular accel:      0.2699 rad/s²
+[INFO] [1777741452.011397082] [data_collector]: =======================================================
+[INFO] [1777741452.012326500] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/social_4groups_headless_10.csv
+[INFO] [1777741452.012785423] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777741452.013687241] [data_collector]: SIGUSR1: experiment was not active, shutting down.
+Traceback (most recent call last):
+  File "/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/data_collector", line 411, in <module>
+    main()
+  File "/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/data_collector", line 391, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 757, in _wait_for_ready_callbacks
+    wait_set = _rclpy.WaitSet(
+               ^^^^^^^^^^^^^^^
+rclpy._rclpy_pybind11.RCLError: failed to initialize wait set: the given context is not valid, either rcl_init() was not called or rcl_shutdown() was called., at ./src/rcl/wait.c:130

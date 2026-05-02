@@ -1,0 +1,42 @@
+[INFO] [1777718246.859447605] [data_collector]: DataCollector ready  mode=dynamic_astar  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777718246.860135121] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/dynamic_4groups_headless_10.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777718251.919406015] [data_collector]: Started experiment [dynamic_astar]
+[INFO] [1777718252.113996451] [data_collector]: Encounter (<1.0m) +1, total=1
+[WARN] [1777718252.114325421] [data_collector]: Personal space violation (<1.20m) +1, total=1
+[WARN] [1777718280.228921067] [data_collector]: Personal space violation (<1.20m) +1, total=2
+[INFO] [1777718280.329846696] [data_collector]: Encounter (<1.0m) +1, total=2
+[WARN] [1777718280.906067231] [data_collector]: Intimate space violation (<0.45m) +1, total=1
+[WARN] [1777718290.430628032] [data_collector]: Personal space violation (<1.20m) +1, total=3
+[INFO] [1777718290.604148112] [data_collector]: Encounter (<1.0m) +1, total=3
+[WARN] [1777718291.349487994] [data_collector]: Intimate space violation (<0.45m) +1, total=2
+[WARN] [1777718305.360608426] [data_collector]: Personal space violation (<1.20m) +1, total=4
+[INFO] [1777718305.977516941] [data_collector]: Encounter (<1.0m) +1, total=4
+[WARN] [1777718314.034931267] [data_collector]: Personal space violation (<1.20m) +1, total=5
+[INFO] [1777718314.203529133] [data_collector]: Encounter (<1.0m) +1, total=5
+[WARN] [1777718314.473833018] [data_collector]: Personal space violation (<1.20m) +1, total=6
+[WARN] [1777718315.521186456] [data_collector]: Intimate space violation (<0.45m) +1, total=3
+[WARN] [1777718317.356926902] [data_collector]: Personal space violation (<1.20m) +1, total=7
+[WARN] [1777718335.523311372] [data_collector]: Personal space violation (<1.20m) +1, total=8
+[WARN] [1777718341.844521923] [data_collector]: Personal space violation (<1.20m) +1, total=9
+[INFO] [1777718342.026563812] [data_collector]: Encounter (<1.0m) +1, total=6
+[WARN] [1777718352.902387957] [data_collector]: Personal space violation (<1.20m) +1, total=10
+[INFO] [1777718353.283173849] [data_collector]: Encounter (<1.0m) +1, total=7
+[WARN] [1777718353.917855515] [data_collector]: Personal space violation (<1.20m) +1, total=11
+[INFO] [1777718355.119863657] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777718355.120138638] [data_collector]: =======================================================
+[INFO] [1777718355.120577986] [data_collector]: Experiment #9 result: succeeded
+[INFO] [1777718355.120800702] [data_collector]:   Mode:                    dynamic_astar
+[INFO] [1777718355.121446002] [data_collector]:   Attempt:                 0
+[INFO] [1777718355.121688989] [data_collector]:   Path length:             36.30 m
+[INFO] [1777718355.121912692] [data_collector]:   Navigation time:         95.12 s
+[INFO] [1777718355.122143972] [data_collector]:   Encounters (<1.0m):      7
+[INFO] [1777718355.122668465] [data_collector]:   Personal violations (<1.20m): 11
+[INFO] [1777718355.123566426] [data_collector]:   Intimate violations (<0.45m): 3
+[INFO] [1777718355.124113827] [data_collector]:   Min pedestrian dist:     0.209 m
+[INFO] [1777718355.124634005] [data_collector]:   Mean angular accel:      0.2572 rad/s²
+[INFO] [1777718355.124919458] [data_collector]: =======================================================
+[INFO] [1777718355.125293821] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/dynamic_4groups_headless_10.csv
+[INFO] [1777718355.125599336] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777718355.127346778] [data_collector]: SIGUSR1: experiment was not active, shutting down.
