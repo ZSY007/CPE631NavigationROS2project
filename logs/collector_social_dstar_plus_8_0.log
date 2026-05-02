@@ -1,0 +1,54 @@
+[INFO] [1777759098.469742062] [data_collector]: DataCollector ready  mode=social_dstar_plus  encounter=1.00m  personal=1.20m  intimate=0.45m
+[INFO] [1777759098.471361969] [data_collector]: Results CSV: /home/dx/CPE631-Navigation-ROS2-main/experiment_results_v3.csv
+
+Commands: [s] start  [e] end  [1] social  [2] baseline  [3] dynamic  [q] quit
+cmd> [INFO] [1777759103.540480137] [data_collector]: Started experiment [social_dstar_plus]
+[WARN] [1777759103.597107661] [data_collector]: Personal space violation (<1.20m) +1, total=1
+[INFO] [1777759104.105060695] [data_collector]: Encounter (<1.0m) +1, total=1
+[WARN] [1777759135.103361720] [data_collector]: Personal space violation (<1.20m) +1, total=2
+[INFO] [1777759135.502838701] [data_collector]: Encounter (<1.0m) +1, total=2
+[WARN] [1777759148.627498252] [data_collector]: Personal space violation (<1.20m) +1, total=3
+[INFO] [1777759148.720345635] [data_collector]: Encounter (<1.0m) +1, total=3
+[WARN] [1777759150.347156571] [data_collector]: Personal space violation (<1.20m) +1, total=4
+[WARN] [1777759164.361479093] [data_collector]: Personal space violation (<1.20m) +1, total=5
+[INFO] [1777759165.053410962] [data_collector]: Encounter (<1.0m) +1, total=4
+[WARN] [1777759176.612744135] [data_collector]: Personal space violation (<1.20m) +1, total=6
+[INFO] [1777759177.128336694] [data_collector]: Encounter (<1.0m) +1, total=5
+[WARN] [1777759185.208390973] [data_collector]: Personal space violation (<1.20m) +1, total=7
+[INFO] [1777759185.899496132] [data_collector]: Encounter (<1.0m) +1, total=6
+[WARN] [1777759199.580786954] [data_collector]: Personal space violation (<1.20m) +1, total=8
+[INFO] [1777759226.272090525] [data_collector]: SIGUSR1: 读取 result_file → 'succeeded'
+[INFO] [1777759226.272360737] [data_collector]: =======================================================
+[INFO] [1777759226.272582113] [data_collector]: Experiment #8 result: succeeded
+[INFO] [1777759226.272812363] [data_collector]:   Mode:                    social_dstar_plus
+[INFO] [1777759226.273057778] [data_collector]:   Attempt:                 0
+[INFO] [1777759226.273286359] [data_collector]:   Path length:             38.88 m
+[INFO] [1777759226.273511889] [data_collector]:   Navigation time:         100.46 s
+[INFO] [1777759226.274026240] [data_collector]:   Encounters (<1.0m):      6
+[INFO] [1777759226.274305852] [data_collector]:   Personal violations (<1.20m): 8
+[INFO] [1777759226.274561045] [data_collector]:   Intimate violations (<0.45m): 0
+[INFO] [1777759226.275529896] [data_collector]:   Min pedestrian dist:     0.505 m
+[INFO] [1777759226.275978094] [data_collector]:   Mean angular accel:      0.2040 rad/s²
+[INFO] [1777759226.276265451] [data_collector]: =======================================================
+[INFO] [1777759226.276730261] [data_collector]: Saved to /home/dx/CPE631-Navigation-ROS2-main/experiment_results_v3.csv
+[INFO] [1777759226.277069163] [data_collector]: exit_after_result=True, shutting down.
+[INFO] [1777759226.280753329] [data_collector]: SIGUSR1: experiment was not active, shutting down.
+Traceback (most recent call last):
+  File "/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/data_collector", line 411, in <module>
+    main()
+  File "/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/cpe631_ros2/data_collector", line 391, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 740, in _wait_for_ready_callbacks
+    context_stack.enter_context(gc.handle)
+                                ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'handle'

@@ -6,6 +6,7 @@ cpe631_ros2/goal_sender.py
 cpe631_ros2/map_republisher.py
 cpe631_ros2/ped_pose_extractor.py
 cpe631_ros2/peds.py
+cpe631_ros2/replan_trigger.py
 cpe631_ros2/social_nav_node.py
 cpe631_ros2/teleop.py
 cpe631_ros2.egg-info/PKG-INFO

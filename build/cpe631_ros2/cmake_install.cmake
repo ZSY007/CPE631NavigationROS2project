@@ -82,6 +82,10 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cpe631_ros2" TYPE PROGRAM RENAME "goal_sender" FILES "/home/dx/CPE631-Navigation-ROS2-main/cpe631_ros2/goal_sender.py")
 endif()
 
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cpe631_ros2" TYPE PROGRAM RENAME "replan_trigger" FILES "/home/dx/CPE631-Navigation-ROS2-main/cpe631_ros2/replan_trigger.py")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()

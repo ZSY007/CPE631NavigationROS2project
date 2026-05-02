@@ -99,6 +99,12 @@ install(PROGRAMS
   RENAME goal_sender
 )
 
+install(PROGRAMS
+  cpe631_ros2/replan_trigger.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME replan_trigger
+)
+
 ament_export_include_directories(include)
 ament_export_libraries(cpe631_ros2_dstar_planner)
 ament_export_dependencies(

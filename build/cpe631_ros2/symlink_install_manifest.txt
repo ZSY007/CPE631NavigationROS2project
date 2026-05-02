@@ -10,6 +10,7 @@
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/map_republisher.py
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/ped_pose_extractor.py
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/peds.py
+/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/replan_trigger.py
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/social_nav_node.py
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/lib/python3.12/site-packages/cpe631_ros2/teleop.py
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2//cpe631_ros2_dstar_planner.xml
@@ -83,7 +84,9 @@
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/rviz/gmapping.rviz
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/rviz/navigation.rviz
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/custom_bt.xml
+/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/custom_bt_dstar_plus.xml
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_burger.yaml
+/home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_dstar_plus.yaml
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_dynamic_astar.yaml
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_dynamic_conservative.yaml
 /home/dx/CPE631-Navigation-ROS2-main/install/cpe631_ros2/share/cpe631_ros2/param/nav2_dynamic_dstar.yaml
