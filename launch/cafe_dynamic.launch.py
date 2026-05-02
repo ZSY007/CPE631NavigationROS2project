@@ -476,6 +476,7 @@ def generate_launch_description():
         ],
         output='screen',
         condition=IfCondition(enable_rviz),
+        parameters=[{'use_sim_time': use_sim_time}],
     )
 
     return LaunchDescription([
