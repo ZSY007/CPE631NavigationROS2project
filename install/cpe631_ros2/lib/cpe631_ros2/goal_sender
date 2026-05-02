@@ -77,13 +77,12 @@ class GoalSender(Node):
         self.experiment_wall_timeout = float(
             self.get_parameter("experiment_wall_timeout").value
         )
-        if self.experiment_wall_timeout <= 0.0 and self.experiment_timeout > 0.0:
-            self.experiment_wall_timeout = self.experiment_timeout
 
         self.goals = self._load_route(str(self.get_parameter("route").value))
         self._goal_index = 0
         self._goal_handle = None
         self._route_finished = False
+        self._cancel_shutdown_timer = None
         self._dwell_timer = None
         self._exit_code = 5  # default: exception
 
@@ -181,9 +180,44 @@ class GoalSender(Node):
 
     def _cancel_and_timeout(self):
         """Cancel any active goal and finish as timeout."""
-        if self._goal_handle is not None:
-            self._goal_handle.cancel_goal_async()
-        self._finish_route(success=False, reason="timeout")
+        if self._route_finished:
+            return
+
+        self._finish_route(success=False, reason="timeout", shutdown=False)
+        if self._goal_handle is None:
+            self._shutdown()
+            return
+
+        cancel_future = self._goal_handle.cancel_goal_async()
+        cancel_future.add_done_callback(self._cancel_done_cb)
+        self._cancel_shutdown_timer = self.create_timer(
+            1.0, self._cancel_grace_elapsed, clock=self._steady_clock
+        )
+
+    def _cancel_done_cb(self, future):
+        """Shutdown after the cancel request has had a chance to reach Nav2."""
+        try:
+            future.result()
+            self.get_logger().info("Nav2 goal cancel request acknowledged.")
+        except Exception as exc:
+            self.get_logger().warning(f"Nav2 goal cancel request failed: {exc}")
+        self._destroy_cancel_timer()
+        self._shutdown()
+
+    def _cancel_grace_elapsed(self):
+        self.get_logger().warning(
+            "Nav2 goal cancel request not acknowledged within 1.0s; shutting down."
+        )
+        self._destroy_cancel_timer()
+        self._shutdown()
+
+    def _destroy_cancel_timer(self):
+        if self._cancel_shutdown_timer is not None:
+            try:
+                self.destroy_timer(self._cancel_shutdown_timer)
+            except Exception:
+                pass
+            self._cancel_shutdown_timer = None
 
     # ── Goal lifecycle ───────────────────────────────────────
 
@@ -200,6 +234,8 @@ class GoalSender(Node):
 
     def _send_goal(self):
         """Send the goal at self._goal_index via the action client."""
+        if self._route_finished:
+            return
         if self._goal_index >= len(self.goals):
             self._finish_route(success=True)
             return
@@ -228,6 +264,8 @@ class GoalSender(Node):
 
     def _goal_response_cb(self, future):
         """Called when the action server accepts or rejects the goal."""
+        if self._route_finished:
+            return
         goal_handle = future.result()
         if not goal_handle.accepted:
             self.get_logger().error(
@@ -246,6 +284,8 @@ class GoalSender(Node):
 
     def _result_cb(self, future):
         """Called when the NavigateToPose action finishes."""
+        if self._route_finished:
+            return
         result = future.result()
         status = result.status
         self._goal_handle = None
@@ -289,7 +329,7 @@ class GoalSender(Node):
 
     # ── Route completion ─────────────────────────────────────
 
-    def _finish_route(self, success: bool, reason: str = ""):
+    def _finish_route(self, success: bool, reason: str = "", shutdown: bool = True):
         if self._route_finished:
             return
         self._route_finished = True
@@ -317,7 +357,11 @@ class GoalSender(Node):
                 f"Completed {done}/{total} goals."
             )
 
-        # Trigger clean shutdown so the process exits with _exit_code
+        if shutdown:
+            self._shutdown()
+
+    def _shutdown(self):
+        """Trigger clean shutdown so the process exits with _exit_code."""
         try:
             rclpy.shutdown()
         except Exception:
@@ -338,9 +382,15 @@ def main(args=None):
     finally:
         exit_code = node._exit_code
         # Cancel active Nav2 goal before shutting down
-        if node._goal_handle is not None:
+        if node._goal_handle is not None and rclpy.ok():
             node.get_logger().info("Canceling active Nav2 goal...")
-            node._goal_handle.cancel_goal_async()
+            cancel_future = node._goal_handle.cancel_goal_async()
+            try:
+                rclpy.spin_until_future_complete(
+                    node, cancel_future, timeout_sec=1.0
+                )
+            except Exception:
+                pass
         try:
             node.destroy_node()
         except Exception:

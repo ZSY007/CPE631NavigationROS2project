@@ -299,8 +299,10 @@ class DataCollector(Node):
         elapsed = self.now_sec() - self.start_time
         self.is_navigating = False
         min_dist = None if math.isinf(self.min_ped_dist) else self.min_ped_dist
-        mean_accel = round(
-            self.total_angular_accel / max(self.angular_accel_samples, 1), 4
+        mean_accel = (
+            round(self.total_angular_accel / self.angular_accel_samples, 4)
+            if self.angular_accel_samples > 0
+            else None
         )
 
         self.get_logger().info("=" * 55)
@@ -313,7 +315,7 @@ class DataCollector(Node):
         self.get_logger().info(f"  Personal violations (<{self.personal_zone:.2f}m): {self.personal_violations}")
         self.get_logger().info(f"  Intimate violations (<{self.intimate_zone:.2f}m): {self.intimate_violations}")
         self.get_logger().info(f"  Min pedestrian dist:     {f'{min_dist:.3f} m' if min_dist is not None else 'N/A'}")
-        self.get_logger().info(f"  Mean angular accel:      {mean_accel:.4f} rad/s²")
+        self.get_logger().info(f"  Mean angular accel:      {f'{mean_accel:.4f} rad/s²' if mean_accel is not None else 'N/A (no cmd_vel)'}")
         self.get_logger().info("=" * 55)
 
         with open(self.csv_file, "a", newline="") as f:
@@ -322,7 +324,7 @@ class DataCollector(Node):
                 round(self.path_length, 3), round(elapsed, 2),
                 self.encounter_count, self.personal_violations, self.intimate_violations,
                 "" if min_dist is None else round(min_dist, 3),
-                mean_accel,
+                "" if mean_accel is None else mean_accel,
             ])
         self.get_logger().info(f"Saved to {self.csv_file}")
 
