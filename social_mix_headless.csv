@@ -6,3 +6,14 @@ experiment,mode,result,attempt,path_length_m,time_s,encounters,personal_violatio
 3,social_dstar,succeeded,0,36.351,116.17,4,11,3,0.107,0.2346
 4,social_dstar,succeeded,0,37.384,349.45,7,16,4,0.228,0.1367
 5,social_dstar,succeeded,0,36.636,92.05,7,9,5,0.04,0.2505
+1,social,aborted,0,23.256,329.49,25,28,15,0.091,0.2211
+1,social,succeeded,1,36.376,101.14,7,12,1,0.272,0.2855
+2,social,succeeded,0,36.349,103.19,7,8,4,0.085,0.2294
+3,social,succeeded,0,36.199,103.05,8,9,5,0.021,0.2557
+4,social,succeeded,0,37.59,137.72,14,20,8,0.062,0.2461
+5,social,succeeded,0,37.06,104.53,7,12,2,0.013,0.2297
+1,social_astar,succeeded,0,39.612,383.25,49,56,7,0.077,0.1806
+2,social_astar,succeeded,0,36.311,98.85,7,13,3,0.349,0.2893
+3,social_astar,succeeded,0,36.467,102.79,9,14,5,0.05,0.2694
+4,social_astar,succeeded,0,36.512,101.54,7,8,5,0.067,0.2312
+5,social_astar,succeeded,0,36.24,164.84,18,26,12,0.096,0.2026
