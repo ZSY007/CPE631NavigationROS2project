@@ -1,3 +1,0 @@
-1777013030.4072323 [INFO] [launch]: All log files can be found below /home/yifan/ros2_ws/src/cpe631_ros2/.roslog_run/2026-04-24-02-43-50-404216-yifan-Precision-5680-14501
-1777013030.4077051 [INFO] [launch]: Default logging verbosity is set to INFO
-1777013032.7250400 [ERROR] [launch]: Caught exception in launch (see debug for traceback): error creating node: __create_participant failed to create participant, at ./src/participant.cpp:107, at ./src/rcl/node.c:252
