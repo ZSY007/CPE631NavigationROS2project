@@ -71,7 +71,7 @@ class PedestrianManager(Node):
 
     def _make_initial_pedestrians(self):
         return {
-            # 4 个固定路线行人（直线往返）
+            # 4 fixed-route pedestrians (linear back-and-forth)
             'ped_1': {'start': (3.0, 5.0),  'end': (3.0, -8.0),  'speed': 1.2,
                       'current': (3.0, 5.0),  'direction': 1, 'mode': 'linear'},
             'ped_2': {'start': (-3.0, 5.0), 'end': (-3.0, 0.0),  'speed': 0.8,
@@ -80,7 +80,7 @@ class PedestrianManager(Node):
                       'current': (2.0, -4.5), 'direction': 1, 'mode': 'linear'},
             'ped_4': {'start': (0.0, 6.0),  'end': (3.5, 6.5),   'speed': 0.5,
                       'current': (0.0, 6.0),  'direction': 1, 'mode': 'linear'},
-            # 第 5 个行人：随机游走，使场景更真实
+            # 5th pedestrian: random walking for realistic scene
             'ped_5': {
                 'start': (-1.0, 2.0), 'end': (-1.0, 2.0), 'speed': 0.6,
                 'current': (-1.0, 2.0), 'direction': 1, 'mode': 'random',

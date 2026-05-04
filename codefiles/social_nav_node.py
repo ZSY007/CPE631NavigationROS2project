@@ -2,15 +2,15 @@
 """
 social_nav_node.py  –  Enhanced Anisotropic Gaussian Social Costmap
 
-算法核心 (v2 – 全面增强):
-  1. 订阅行人位姿，nearest-neighbor data association 稳定追踪
-  2. 估计行人速度（指数平滑 + 跳变过滤 + 速度上限）
-  3. 自适应预测视野（跟行人速度挂钩）
-  4. 非线性不确定性增长（远期扩散更快）+ heading 惯性约束
-  5. 非对称各向异性 Gaussian（前方更强，后方减弱）
-  6. Group / Crowd cost（行人密集区域加强代价）
-  7. Robot direction-aware 代价衰减（后方行人降权）
-  8. 交互式预测：行人对多条机器人候选轨迹的简单反应偏移
+Algorithm Core (v2 - Comprehensive Enhancement):
+  1. Subscribe to pedestrian poses, stable tracking with nearest-neighbor data association
+  2. Estimate pedestrian velocity (exponential smoothing + jump filtering + speed limit)
+  3. Adaptive prediction horizon (linked to pedestrian speed)
+  4. Non-linear uncertainty growth (far-field diffuses faster) + heading inertia constraint
+  5. Asymmetric anisotropic Gaussian (front stronger, rear weaker)
+  6. Group / Crowd cost (intensified cost in dense pedestrian zones)
+  7. Robot direction-aware cost decay (rear pedestrians downweighted)
+  8. Interactive prediction: simple pedestrian reaction offset to multiple robot candidate trajectories
 
 Topic In:  /pedestrian_poses  (geometry_msgs/PoseArray)
            /amcl_pose         (geometry_msgs/PoseWithCovarianceStamped)
@@ -32,10 +32,10 @@ from tf2_ros import Buffer, TransformException, TransformListener
 
 
 # ──────────────────────────────────────────────────────────────
-#  PedestrianTracker  (增强版)
+#  PedestrianTracker (Enhanced Version)
 # ──────────────────────────────────────────────────────────────
 class PedestrianTracker:
-    """单个行人的位置与速度估计器（增强版：跳变过滤 + 速度上限 + 徘徊检测）。"""
+    """Position and velocity estimator for a single pedestrian (Enhanced: jump filtering + speed limit + wandering detection)."""
 
     def __init__(
         self,
@@ -64,18 +64,18 @@ class PedestrianTracker:
         self.max_jump_dist = max_jump_dist
         self._initialized = False
 
-    # ── 便捷属性 ──────────────────────────────────────────────
+    # ── Convenience properties ──────────────────────────────────────────────
     @property
     def position(self) -> np.ndarray:
-        """返回最新已知位置。"""
+        """Return the latest known position."""
         return self.history[-1][1]
 
-    # ── 徘徊模式检测 ─────────────────────────────────────────
+    # ── Wandering mode detection ─────────────────────────────────────────
     def is_wandering(self, ratio_thresh: float = 0.3) -> bool:
-        """检测行人是否在徘徊（曲折移动，净位移远小于路径长度）。
+        """Detect if pedestrian is wandering (meandering movement, net displacement much less than path length).
 
-        原理：计算 历史首尾净位移 / 路径总长度。
-        如果比值 < ratio_thresh，说明行人在原地打转或随机游走。
+        Principle: compute history start-end net displacement / total path length.
+        If ratio < ratio_thresh, pedestrian is spinning in place or random walking.
         """
         if len(self.history) < 3:
             return False
@@ -86,17 +86,17 @@ class PedestrianTracker:
             for i in range(len(positions) - 1)
         )
         if total_path < 0.1:
-            return False  # 移动量太小，无法判断
+            return False  # Movement too small to judge
         return (displacement / total_path) < ratio_thresh
 
-    # ── 速度更新 ──────────────────────────────────────────────
+    # ── Velocity update ──────────────────────────────────────────────
     def update(
         self,
         pos: np.ndarray,
         stamp: float,
         observed_heading: np.ndarray | None = None,
     ) -> None:
-        """用新观测更新速度，含跳变过滤和速度上限保护。"""
+        """Update velocity with new observations, including jump filtering and speed limit protection."""
         last_stamp, last_pos = self.history[-1]
         dt = stamp - last_stamp
 
@@ -104,16 +104,16 @@ class PedestrianTracker:
             displacement = pos - last_pos
             dist = float(np.linalg.norm(displacement))
 
-            # ── 异常跳变过滤 ──
+            # ── Anomalous jump filtering ──
             if dist > self.max_jump_dist:
-                # 位置跳变不合理，仅推进时间戳，不更新速度/位置
+                # Position jump is unreasonable, only advance timestamp, do not update velocity/position
                 self.history.append((stamp, last_pos.copy()))
                 return
 
             instant_velocity = displacement / dt
 
             if not self._initialized:
-                # 首帧直接赋值，避免从零平滑导致的低估
+                # Direct assignment on first frame to avoid underestimation from smoothing from zero
                 self.velocity = instant_velocity
                 self._initialized = True
             else:
@@ -123,7 +123,7 @@ class PedestrianTracker:
                     + (1.0 - alpha_t) * self.velocity
                 )
 
-            # ── 速度上限保护 ──
+            # ── Speed limit protection ──
             speed = float(np.linalg.norm(self.velocity))
             if speed > self.max_ped_speed:
                 self.velocity = self.velocity / speed * self.max_ped_speed
@@ -152,7 +152,7 @@ class PedestrianTracker:
         velocities = np.array(self.velocity_history, dtype=float)
         return float(np.linalg.norm(np.std(velocities, axis=0)))
 
-    # ── 轨迹预测 ─────────────────────────────────────────────
+    # ── Trajectory prediction ─────────────────────────────────────────────
     def predict(
         self,
         dt: float,
@@ -163,38 +163,38 @@ class PedestrianTracker:
         speed_sigma_scale: float,
         stationary_sigma: float,
         min_motion_speed: float,
-        # 自适应 horizon
+        # Adaptive horizon
         base_lookahead: float = 2.0,
         speed_lookahead_gain: float = 1.0,
         min_lookahead: float = 1.5,
         max_lookahead: float = 5.0,
-        # 非线性不确定性
+        # Non-linear uncertainty
         uncertainty_exponent: float = 1.3,
         velocity_uncertainty_gain: float = 0.35,
         max_uncertainty_scale: float = 1.6,
-        # heading 惯性
+        # Heading inertia
         max_heading_change: float = 0.524,  # ~30° in rad
-        # 交互式预测
+        # Interactive prediction
         robot_trajs: list[list[np.ndarray]] | None = None,
         ped_react_gain: float = 0.15,
-        # 三级混合模式
+        # Three-tier hybrid mode
         slow_speed_thresh: float = 0.3,
         wandering_ratio: float = 0.3,
     ) -> list[tuple[np.ndarray, np.ndarray, float, float]]:
         """
-        返回未来每一步的 (mean, heading, sigma_long, sigma_short)。
+        Return (mean, heading, sigma_long, sigma_short) for each future step.
 
-        增强：
-          – 三级混合模式（静止/徘徊→圆形, 慢速→弱各向异性, 快速→窄长椭圆）
-          – 自适应 horizon（快速行人预测更远）
-          – 非线性不确定性增长（k^exponent）
-          – Heading 惯性约束（限制每步 heading 突变）
-          – 交互式预测（行人向远离最近机器人候选轨迹的方向偏移）
+        Enhancements:
+          – Three-tier hybrid mode (stationary/wandering→circular, slow→weak anisotropic, fast→narrow-long ellipse)
+          – Adaptive horizon (fast pedestrians predict further)
+          – Non-linear uncertainty growth (k^exponent)
+          – Heading inertia constraint (limit heading change per step)
+          – Interactive prediction (pedestrian shifts away from nearest robot candidate trajectory)
         """
         base_pos = self.position
         speed = float(np.linalg.norm(self.velocity))
 
-        # ── 自适应 prediction horizon ──
+        # ── Adaptive prediction horizon ──
         lookahead_time = float(np.clip(
             base_lookahead + speed_lookahead_gain * speed,
             min_lookahead,
@@ -202,24 +202,24 @@ class PedestrianTracker:
         ))
         effective_horizon = max(1, int(lookahead_time / dt))
 
-        # ── 三级混合模式 sigma 选择 ──
+        # ── Three-tier hybrid mode sigma selection ──
         wandering = self.is_wandering(ratio_thresh=wandering_ratio)
 
         if speed < min_motion_speed or wandering:
-            # ▸ 模式 A：静止 / 徘徊 → 圆形对称高斯
+            # ▸ Mode A: stationary / wandering → circular symmetric Gaussian
             heading = self.heading
             base_long = stationary_sigma
             base_short = stationary_sigma
         elif speed < slow_speed_thresh:
-            # ▸ 模式 B：慢速 → 弱各向异性（椭圆较圆）
+            # ▸ Mode B: slow → weak anisotropic (ellipse more circular)
             heading = self.velocity / speed
             base_long = longitudinal_sigma + 0.5 * speed_sigma_scale * speed
-            base_short = lateral_sigma * 1.3  # 横向稍宽，反映方向不确定
+            base_short = lateral_sigma * 1.3  # Lateral slightly wider, reflecting direction uncertainty
         else:
-            # ▸ 模式 C：快速 → 窄长椭圆（方向性强）
+            # ▸ Mode C: fast → narrow-long ellipse (high directionality)
             heading = self.velocity / speed
             base_long = longitudinal_sigma + speed_sigma_scale * speed
-            base_short = lateral_sigma * 0.8  # 横向更窄，方向确定性高
+            base_short = lateral_sigma * 0.8  # Lateral narrower, high direction certainty
 
         velocity_uncertainty = self.velocity_uncertainty()
         sigma_scale = float(np.clip(
@@ -237,7 +237,7 @@ class PedestrianTracker:
         for k in range(1, effective_horizon + 1):
             mean = base_pos + self.velocity * (k * dt)
 
-            # ── 交互式预测：行人对机器人的反应 ──
+            # ── Interactive prediction: pedestrian's response to robot ──
             if robot_trajs is not None:
                 robot_pos_k = self._nearest_robot_prediction(robot_trajs, k - 1, mean)
                 ped_to_robot = robot_pos_k - mean if robot_pos_k is not None else None
@@ -251,9 +251,9 @@ class PedestrianTracker:
                     offset = ped_react_gain / (dist_to_robot + 0.1) * avoidance_dir
                     mean = mean + offset
 
-            # ── Heading 惯性约束：每步从 prev_heading 向目标 heading 最多转 max_heading_change ──
-            # prev_heading 是上一步已钳制的方向；heading 是当前速度方向（目标）。
-            # 每步向目标旋转但不超过 max_heading_change，避免预测方向在远期突变。
+            # ── Heading inertia constraint: each step from prev_heading to target heading rotate at most max_heading_change ──
+            # prev_heading is the constrained direction from previous step; heading is current velocity direction (target).
+            # Rotate toward target each step but not exceed max_heading_change, avoid abrupt direction change in far-field.
             if speed >= min_motion_speed:
                 cross = (prev_heading[0] * heading[1]
                          - prev_heading[1] * heading[0])
@@ -275,7 +275,7 @@ class PedestrianTracker:
                 current_heading = heading.copy()
             prev_heading = current_heading.copy()
 
-            # ── 非线性不确定性增长 ──
+            # ── Non-linear uncertainty growth ──
             q_growth_long = q_scale * (k ** uncertainty_exponent)
             q_growth_short = lateral_q_scale * (k ** uncertainty_exponent)
             sigma_long = math.sqrt(base_long ** 2 + q_growth_long)
@@ -310,14 +310,14 @@ class PedestrianTracker:
 
 
 # ──────────────────────────────────────────────────────────────
-#  SocialNavNode  (增强版)
+#  SocialNavNode (Enhanced Version)
 # ──────────────────────────────────────────────────────────────
 class SocialNavNode(Node):
 
     def __init__(self):
         super().__init__("social_nav_node")
 
-        # ── 原有参数 ─────────────────────────────────────────
+        # ── Original parameters ─────────────────────────────────────────
         self.declare_parameter("prediction_dt", 0.5)
         self.declare_parameter("q_scale", 0.08)
         self.declare_parameter("lateral_q_scale", 0.02)
@@ -345,19 +345,19 @@ class SocialNavNode(Node):
         self.declare_parameter("speed_sigma_scale", 0.35)
         self.declare_parameter("min_motion_speed", 0.05)
 
-        # ── 新增参数 ─────────────────────────────────────────
+        # ── New parameters ─────────────────────────────────────────
         # 1. Nearest-neighbor association
         self.declare_parameter("association_threshold", 2.0)
-        # 2. 速度保护
+        # 2. Speed protection
         self.declare_parameter("max_ped_speed", 1.8)
         self.declare_parameter("max_jump_dist", 1.0)
-        # 3. 非对称 Gaussian
+        # 3. Asymmetric Gaussian
         self.declare_parameter("behind_sigma_ratio", 0.5)
         # 4. Group cost
         self.declare_parameter("group_threshold", 1.5)
         self.declare_parameter("group_sigma", 0.6)
         self.declare_parameter("group_cost_ratio", 0.45)
-        # 5. 自适应 horizon
+        # 5. Adaptive horizon
         self.declare_parameter("base_lookahead", 1.5)
         self.declare_parameter("speed_lookahead_gain", 0.7)
         self.declare_parameter("min_lookahead", 1.5)
@@ -368,13 +368,13 @@ class SocialNavNode(Node):
         self.declare_parameter("robot_pose_topic", "/amcl_pose")
         self.declare_parameter("global_frame", "map")
         self.declare_parameter("robot_base_frame", "base_link")
-        # 8. 高级预测
+        # 8. Advanced prediction
         self.declare_parameter("uncertainty_exponent", 1.3)
         self.declare_parameter("velocity_uncertainty_gain", 0.35)
         self.declare_parameter("max_uncertainty_scale", 1.6)
         self.declare_parameter("max_heading_change_deg", 30.0)
         self.declare_parameter("ped_react_gain", 0.15)
-        # 9. 三级混合模式 + 徘徊检测
+        # 9. Three-tier hybrid mode + wandering detection
         self.declare_parameter("slow_speed_thresh", 0.3)
         self.declare_parameter("wandering_ratio", 0.3)
         # 10. Robot relevance: keep near conflicts strong, soften distant forecasts
@@ -394,7 +394,7 @@ class SocialNavNode(Node):
         self.declare_parameter("robot_traj_yaw_rate_span", 0.8)
         self.declare_parameter("robot_prediction_min_speed", 0.12)
 
-        # ── 读取参数 ─────────────────────────────────────────
+        # ── Read parameters ─────────────────────────────────────────
         self.pred_dt = float(self.get_parameter("prediction_dt").value)
         self.q_scale = float(self.get_parameter("q_scale").value)
         self.lateral_q_scale = float(self.get_parameter("lateral_q_scale").value)
@@ -493,24 +493,24 @@ class SocialNavNode(Node):
             self.get_parameter("robot_prediction_min_speed").value
         )
 
-        # ── 栅格坐标预计算 ───────────────────────────────────
+        # ── Grid coordinate precomputation ───────────────────────────────────
         xs = self.origin_x + (np.arange(self.width_cells) + 0.5) * self.resolution
         ys = self.origin_y + (np.arange(self.height_cells) + 0.5) * self.resolution
         self.cell_x, self.cell_y = np.meshgrid(xs, ys)
 
-        # ── Tracker 管理 ─────────────────────────────────────
+        # ── Tracker management ─────────────────────────────────────
         self.trackers: dict[int, PedestrianTracker] = {}
         self.last_stamp: dict[int, float] = {}
-        self._next_id: int = 0  # 全局自增 ID
+        self._next_id: int = 0  # Global auto-incrementing ID
 
-        # ── 机器人状态（direction-aware + 交互式预测）────────
+        # ── Robot state (direction-aware + interactive prediction) ────────
         self.robot_pos: np.ndarray | None = None
         self.robot_heading: np.ndarray = np.array([1.0, 0.0])
         self.robot_velocity: np.ndarray = np.zeros(2)
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
-        # ── 订阅 / 发布 ─────────────────────────────────────
+        # ── Subscriptions / Publications ─────────────────────────────────────
         self.sub = self.create_subscription(
             PoseArray, self.input_topic, self._ped_callback, 10,
         )
@@ -537,7 +537,7 @@ class SocialNavNode(Node):
     #  Robot pose / velocity callbacks
     # ─────────────────────────────────────────────────────────
     def _robot_pose_callback(self, msg: PoseWithCovarianceStamped) -> None:
-        """获取 map frame 下机器人位姿，和 map frame 行人 / social_costmap 保持一致。"""
+        """Get robot pose in map frame, consistent with map frame pedestrians / social_costmap."""
         self.robot_pos = np.array([
             msg.pose.pose.position.x,
             msg.pose.pose.position.y,
@@ -570,9 +570,11 @@ class SocialNavNode(Node):
         return True
 
     def _odom_callback(self, msg: Odometry) -> None:
-        """获取机器人速度；位姿/朝向由 /amcl_pose 提供，避免 odom/map 混用。"""
-        # 只使用 /odom 的速度。位姿必须来自 map frame (/amcl_pose 或 TF)，
-        # 否则 robot_pos 会在 odom/map 坐标系之间短暂错位。
+        """Get robot velocity; pose/heading provided by /amcl_pose to avoid mixing odom/map.
+        
+        Only use /odom velocity. Pose must come from map frame (/amcl_pose or TF),
+        otherwise robot_pos will misalign between odom/map frames.
+        """
         vx = msg.twist.twist.linear.x
         vy = msg.twist.twist.linear.y
         cos_y, sin_y = self.robot_heading
@@ -588,8 +590,8 @@ class SocialNavNode(Node):
         self, observations: list[np.ndarray], now: float
     ) -> list[tuple[int, np.ndarray, int]]:
         """
-        将本帧观测位置与已有 tracker 做全局最优最近邻匹配。
-        距离 > association_threshold 的观测被视为新行人。
+        Match current frame observations with existing trackers using global optimal nearest-neighbor.
+        Observations with distance > association_threshold are treated as new pedestrians.
         """
         matched: list[tuple[int, np.ndarray, int]] = []
 
@@ -605,7 +607,7 @@ class SocialNavNode(Node):
         ])
         obs_positions = np.array(observations)
 
-        # 距离矩阵 (n_trackers, n_observations)
+        # Distance matrix (n_trackers, n_observations)
         diff = tracker_positions[:, None, :] - obs_positions[None, :, :]
         dist_matrix = np.linalg.norm(diff, axis=2)
 
@@ -614,7 +616,7 @@ class SocialNavNode(Node):
             matched.append((tracker_ids[t_idx], observations[o_idx], o_idx))
             used_obs.add(o_idx)
 
-        # 未匹配的观测 → 新 tracker
+        # Unmatched observations → new tracker
         for o_idx, obs in enumerate(observations):
             if o_idx not in used_obs:
                 matched.append((self._next_id, obs, o_idx))
@@ -623,7 +625,7 @@ class SocialNavNode(Node):
         return matched
 
     def _global_assignment(self, dist_matrix: np.ndarray) -> list[tuple[int, int]]:
-        """小规模 Hungarian-style 全局匹配，避免行人交叉时贪心换 ID。"""
+        """Small-scale Hungarian-style global matching, avoid greedy ID swaps during pedestrian crossing."""
         n_trackers, n_obs = dist_matrix.shape
         max_pairs = min(n_trackers, n_obs)
         best_pairs: list[tuple[int, int]] = []
@@ -647,7 +649,7 @@ class SocialNavNode(Node):
         return best_pairs
 
     # ─────────────────────────────────────────────────────────
-    #  Pedestrian callback (nearest-neighbor 版)
+    #  Pedestrian callback (nearest-neighbor version)
     # ─────────────────────────────────────────────────────────
     def _ped_callback(self, msg: PoseArray) -> None:
         now = self.get_clock().now().nanoseconds * 1e-9
@@ -696,12 +698,11 @@ class SocialNavNode(Node):
     # ─────────────────────────────────────────────────────────
     def _publish(self) -> None:
         now = self.get_clock().now().nanoseconds * 1e-9
-        self._refresh_robot_pose_from_tf()
         self._drop_stale_tracks(now)
 
         costs = np.zeros((self.height_cells, self.width_cells), dtype=np.float32)
 
-        # ── 多假设机器人轨迹外推（轻量级交互 / 博弈式预测）────────
+        # ── Multi-hypothesis robot trajectory extrapolation (lightweight interaction / game-theoretic prediction)────────
         robot_steps = max(1, int(math.ceil(self.max_lookahead / self.pred_dt)))
         robot_trajs = self._build_robot_trajectory_hypotheses(max_steps=robot_steps)
 
@@ -738,7 +739,7 @@ class SocialNavNode(Node):
                 wandering_ratio=self.wandering_ratio,
             )
 
-            # ── Robot direction-aware：后方行人降权 ──
+            # ── Robot direction-aware: rear pedestrians downweighted ──
             ped_behind_robot = False
             if self.robot_pos is not None:
                 robot_to_ped = tracker.position - self.robot_pos
@@ -856,7 +857,7 @@ class SocialNavNode(Node):
     #  Group cost
     # ─────────────────────────────────────────────────────────
     def _add_group_costs(self, costs: np.ndarray) -> None:
-        """行人对距离 < threshold 时，在中点添加圆形 Gaussian。"""
+        """When pedestrians at distance < threshold, add circular Gaussian at midpoint."""
         items = list(self.trackers.items())
         n = len(items)
         if n < 2:
@@ -869,7 +870,7 @@ class SocialNavNode(Node):
                 dist = float(np.linalg.norm(pos_i - pos_j))
                 if dist < self.group_threshold:
                     midpoint = (pos_i + pos_j) / 2.0
-                    heading = np.array([1.0, 0.0])  # 圆形对称
+                    heading = np.array([1.0, 0.0])  # Circular symmetric
                     amplitude = (
                         self.peak_cost
                         * self.group_cost_ratio
@@ -889,7 +890,7 @@ class SocialNavNode(Node):
         step_index: int,
         robot_trajs: list[list[np.ndarray]] | None,
     ) -> float:
-        """降低远离机器人当前/预测轨迹的远期代价，减少不相关行人堵路。"""
+        """Reduce far-field cost away from robot current/predicted trajectory, minimize irrelevant pedestrian blocking."""
         if self.robot_pos is None:
             return 1.0
 
@@ -948,7 +949,7 @@ class SocialNavNode(Node):
             self.last_stamp.pop(ped_id, None)
 
     # ─────────────────────────────────────────────────────────
-    #  非对称各向异性 Gaussian
+    #  Asymmetric anisotropic Gaussian
     # ─────────────────────────────────────────────────────────
     def _accumulate_gaussian(
         self,
@@ -959,7 +960,7 @@ class SocialNavNode(Node):
         sigma_short: float,
         amplitude: float,
     ) -> None:
-        """前方 sigma 保持原值，后方使用 behind_sigma_ratio 缩减。"""
+        """Front sigma kept as-is, rear uses behind_sigma_ratio reduction."""
         radius = self.cutoff_sigma * max(sigma_long, sigma_short)
         min_x = max(0, int(math.floor(
             (mean[0] - radius - self.origin_x) / self.resolution)))
@@ -981,7 +982,7 @@ class SocialNavNode(Node):
         long_axis = dx * heading[0] + dy * heading[1]
         short_axis = -dx * heading[1] + dy * heading[0]
 
-        # ── 非对称：前方 sigma_long，后方 behind_ratio * sigma_long ──
+        # ── Asymmetric: front sigma_long, rear behind_ratio * sigma_long ──
         sigma_long_front = sigma_long
         sigma_long_behind = self.behind_sigma_ratio * sigma_long
         sigma_long_used = np.where(long_axis >= 0, sigma_long_front, sigma_long_behind)

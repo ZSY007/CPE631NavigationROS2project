@@ -2,42 +2,42 @@
 ###############################################################################
 #  run_all_experiments.sh  v3
 #  ─────────────────────────
-#  一键跑完三组对比实验 (Baseline / Dynamic / Social)
+#  One-command run all three comparison experiments (Baseline / Dynamic / Social)
 #
-#  架构:
-#    每个 mode 启动一次 Gazebo + Nav2，5 个 experiment 共享同一仿真实例。
-#    单次 abort → reset 机器人位姿并重试 (最多 MAX_RETRY 次)。
-#    只有 Gazebo/Nav2 崩溃时才重启整套系统。
+#  Architecture:
+#    Each mode starts Gazebo + Nav2 once, 5 experiments share the same simulator.
+#    Single abort → reset robot pose and retry (up to MAX_RETRY times).
+#    Only restart system when Gazebo/Nav2 crashes.
 #
-#  用法:
+#  Usage:
 #    chmod +x run_all_experiments.sh
 #    ./run_all_experiments.sh
 #
-#  可选环境变量:
-#    ROUTE               自定义路线（分号分隔的 x,y,yaw）
-#    DWELL_TIME          每个目标点停留时间（秒）
-#    STARTUP_WAIT        launch 启动等待时间（秒），也作为行人相位 warm-up
-#    COOLDOWN            mode 间冷却时间（秒）
-#    RUN_COOLDOWN        experiment 间冷却时间（秒）
-#    SETTLE_WAIT         等待 data_collector 写 CSV 秒数
-#    RUNS_PER_MODE       每个模式重复几次（即 waypoint 组数）
-#    MODES               只跑指定模式，逗号分隔，如 social,social_smac
-#    RESET_PEDS_EACH_RUN 每轮实验前重置行人位置（默认 1）
-#    MAX_RETRY           单次 experiment abort 后最大重试次数
-#    ENABLE_RVIZ         批量实验是否启动 RViz（默认 1）
-#    GZ_GUI              批量实验是否启动 Gazebo GUI（默认 1）
-#    SKIP_BUILD          设为 1 跳过编译步骤
-#    EXPERIMENT_TIMEOUT  单次实验最长仿真秒数（默认 720；设为 0 表示不启用 sim-time timeout）
-#    EXPERIMENT_WALL_TIMEOUT  单次实验真实时间看门狗秒数（默认 0；设为 0 表示不启用）
-#    NAV2_READY_TIMEOUT  等待 bt_navigator 激活超时秒数（默认 180）
-#    APPEND_CSV          设为 1 时追加到已有 CSV；默认会备份旧 CSV 后新建
+#  Optional environment variables:
+#    ROUTE               Custom route (semicolon-separated x,y,yaw)
+#    DWELL_TIME          Dwell time at each goal point (seconds)
+#    STARTUP_WAIT        Launch startup wait time (seconds), also pedestrian phase warm-up
+#    COOLDOWN            Cooldown time between modes (seconds)
+#    RUN_COOLDOWN        Cooldown time between experiments (seconds)
+#    SETTLE_WAIT         Wait time for data_collector to write CSV (seconds)
+#    RUNS_PER_MODE       Runs per mode (number of waypoint groups)
+#    MODES               Run only specified modes, comma-separated, e.g. social,social_smac
+#    RESET_PEDS_EACH_RUN Reset pedestrian positions before each run (default 1)
+#    MAX_RETRY           Max retry attempts after abort (default 2)
+#    ENABLE_RVIZ         Enable RViz for batch experiments (default 1)
+#    GZ_GUI              Enable Gazebo GUI for batch experiments (default 1)
+#    SKIP_BUILD          Set to 1 to skip build step
+#    EXPERIMENT_TIMEOUT  Max simulation time per experiment (seconds, default 720; 0 = disabled)
+#    EXPERIMENT_WALL_TIMEOUT  Real-time watchdog per experiment (seconds, default 0; 0 = disabled)
+#    NAV2_READY_TIMEOUT  Wait timeout for bt_navigator activation (seconds, default 180)
+#    APPEND_CSV          Set to 1 to append to existing CSV; default backs up old CSV and creates new
 ###############################################################################
 
 set -euo pipefail
 
-# ── 路径配置 ──────────────────────────────────────────────────
-# 默认使用本脚本所在的包目录作为 colcon workspace 根目录。
-# 这样在当前目录修改代码后，重新运行脚本就会编译并使用当前目录的代码。
+# ── Path configuration ──────────────────────────────────────────────────
+# By default use the package directory where this script is located as colcon workspace root.
+# This way after modifying code in current directory, re-running script compiles and uses current directory's code.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_PKG_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 WS_ROOT="${WS_ROOT:-${SRC_PKG_DIR}}"
@@ -46,8 +46,8 @@ SETUP_BASH="${SETUP_BASH:-${WS_ROOT}/install/setup.bash}"
 LOG_DIR="${LOG_DIR:-${WS_ROOT}/logs}"
 mkdir -p "${LOG_DIR}"
 
-# ── 实验配置 ──────────────────────────────────────────────────
-# 路线: zigzag 覆盖, wp4 放在中左偏下开阔区，避免从上方直接切到左墙/窄口卡住
+# ── Experiment configuration ──────────────────────────────────────────────────
+# Route: zigzag coverage, wp4 in mid-left lower open area, avoid cutting to left wall/narrow mouth from above
 ROUTE="${ROUTE:-0.5,-6.5,2.08;-3.5,0.0,0.89;2.5,6.0,-2.75;-2.0,2.1,-1.10;2.0,-4.0,-2.16}"
 DWELL_TIME="${DWELL_TIME:-0.5}"
 STARTUP_WAIT="${STARTUP_WAIT:-45}"
@@ -80,19 +80,19 @@ fi
 EXPERIMENT_GOAL_TOPIC="${EXPERIMENT_GOAL_TOPIC:-/experiment_goal_pose}"
 APPEND_CSV="${APPEND_CSV:-0}"
 
-# data_collector 参数
+# data_collector parameters
 ENCOUNTER_THRESHOLD="1.0"
 PERSONAL_ZONE="1.2"
 INTIMATE_ZONE="0.45"
 
-# 机器人初始位姿 (与 cafe.world 中的 spawn pose 一致)
+# Robot initial pose (consistent with spawn pose in cafe.world)
 ROBOT_MODEL_NAME="turtlebot3_burger"
 ROBOT_INIT_X="1.0"
 ROBOT_INIT_Y="0.0"
 ROBOT_INIT_Z="0.05"
 ROBOT_INIT_YAW="0.0"
 
-# ── 颜色输出 ──────────────────────────────────────────────────
+# ── Color output ──────────────────────────────────────────────────
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'

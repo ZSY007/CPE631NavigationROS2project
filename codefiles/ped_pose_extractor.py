@@ -2,16 +2,16 @@
 """
 ped_pose_extractor.py
 ─────────────────────
-从 Gazebo 的 /world/cafe/dynamic_pose/info 中提取行人 Actor 位姿，
-过滤掉机器人和静态物体，发布为 PoseArray 供 social_nav_node 消费。
+Extract pedestrian Actor poses from Gazebo /world/cafe/dynamic_pose/info,
+filter out robot and static objects, publish as PoseArray for social_nav_node consumption.
 
-Topic In:  /gz/model_poses  (由 gz-ros bridge 桥接 Pose_V → PoseArray)
+Topic In:  /gz/model_poses  (Pose_V → PoseArray converted by gz-ros bridge)
 Topic Out: /pedestrian_poses (geometry_msgs/PoseArray)
 
-注：Pose_V 经 bridge 转换后名字信息丢失，采用两种过滤策略：
-  1. 显式索引列表 (ped_indices 参数): 最稳定，调试后固定。
-  2. 范围切片 (start_index + pedestrian_count): 向后兼容备用。
-优先使用显式索引列表；如果 ped_indices 为空则回退到范围切片。
+Note: Pose_V loses name information after bridge conversion, using two filtering strategies:
+  1. Explicit index list (ped_indices parameter): most stable, fixed after debugging.
+  2. Range slice (start_index + pedestrian_count): backward compatible fallback.
+Priority: use explicit index list; fallback to range slice if ped_indices is empty.
 """
 
 import rclpy
@@ -24,13 +24,13 @@ class PedPoseExtractor(Node):
     def __init__(self):
         super().__init__("ped_pose_extractor")
 
-        # ── 参数声明 ──────────────────────────────────────────────
+        # ── Parameter declaration ──────────────────────────────
         self.declare_parameter("input_topic", "/gz/model_poses")
         self.declare_parameter("output_topic", "/pedestrian_poses")
-        # 显式索引列表（优先）: 逗号分隔，例如 "1,2,3,4"
-        # 留空 "" 则回退到 start_index + pedestrian_count 范围切片
+        # Explicit index list (priority): comma-separated, e.g. "1,2,3,4"
+        # Leave empty "" to fallback to start_index + pedestrian_count range slice
         self.declare_parameter("ped_indices", "1,2,3,4,5")
-        # 备用范围参数
+        # Fallback range parameters
         self.declare_parameter("start_index", 1)
         self.declare_parameter("pedestrian_count", 5)
 
@@ -40,13 +40,13 @@ class PedPoseExtractor(Node):
         self.start_index = int(self.get_parameter("start_index").value)
         self.pedestrian_count = int(self.get_parameter("pedestrian_count").value)
 
-        # 解析显式索引列表
+        # Parse explicit index list
         if ped_indices_str:
             try:
                 self.ped_indices = [int(x) for x in ped_indices_str.split(",") if x.strip()]
             except ValueError:
                 self.get_logger().error(
-                    f"ped_indices 格式错误: '{ped_indices_str}'，回退到范围切片"
+                    f"ped_indices format error: '{ped_indices_str}', fallback to range slice"
                 )
                 self.ped_indices = []
         else:
@@ -68,40 +68,40 @@ class PedPoseExtractor(Node):
         if self.use_explicit_indices:
             self.get_logger().info(
                 f"PedPoseExtractor: {in_topic} → {out_topic} "
-                f"[显式索引: {self.ped_indices}]"
+                f"[explicit indices: {self.ped_indices}]"
             )
         else:
             end = self.start_index + self.pedestrian_count - 1
             self.get_logger().info(
                 f"PedPoseExtractor: {in_topic} → {out_topic} "
-                f"[范围切片: [{self.start_index}, {end}]]"
+                f"[range slice: [{self.start_index}, {end}]]"
             )
 
     def gz_pose_callback(self, msg: PoseArray):
         total = len(msg.poses)
 
-        # 首帧做索引越界检查
+        # First frame checks index bounds
         if not self._first_frame_checked:
             self._first_frame_checked = True
             self.get_logger().info(
-                f"首帧接收到 {total} 个模型位姿 (index 0 ~ {total - 1})"
+                f"First frame received {total} model poses (index 0 ~ {total - 1})"
             )
             if self.use_explicit_indices:
                 bad = [i for i in self.ped_indices if i >= total or i < 0]
                 if bad:
                     self.get_logger().error(
-                        f"ped_indices 中有越界索引 {bad}（总共 {total} 个模型）。"
-                        "请检查参数 ped_indices 或调整 start_index/pedestrian_count。"
+                        f"ped_indices have out-of-bounds indices {bad} (total {total} models). "
+                        "Check ped_indices parameter or adjust start_index/pedestrian_count."
                     )
             else:
                 end_index = self.start_index + self.pedestrian_count
                 if end_index > total:
                     self.get_logger().error(
-                        f"切片范围 [{self.start_index}:{end_index}] 超出 PoseArray 长度 {total}。"
-                        "请调整 start_index 或 pedestrian_count 参数。"
+                        f"Slice range [{self.start_index}:{end_index}] exceeds PoseArray length {total}. "
+                        "Adjust start_index or pedestrian_count parameters."
                     )
 
-        # ── 提取行人位姿 ─────────────────────────────────────────
+        # ── Extract pedestrian poses ─────────────────────────────────────────
         if self.use_explicit_indices:
             ped_poses = [
                 msg.poses[i]

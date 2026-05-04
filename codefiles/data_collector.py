@@ -2,16 +2,16 @@
 """
 data_collector.py
 ─────────────────
-收集导航性能指标，用于 baseline / social 对比实验。
+Collect navigation performance metrics for baseline / social comparison experiments.
 
 Metrics:
-  1. 路径长度 path_length_m
-  2. 导航时间 time_s
-  3. 遭遇次数 encounters          (<= encounter_threshold, 默认 1.0 m)
-  4. 个人空间侵犯 personal_violations  (<= personal_zone, 默认 1.2 m, Proxemics)
-  5. 亲密空间侵犯 intimate_violations  (<= intimate_zone, 默认 0.45 m, Proxemics)
-  6. 最近距离 min_ped_dist_m
-  7. 路径平滑度 mean_angular_acceleration  (均值 |Δω/Δt|，单位 rad/s²，越小越平滑)
+  1. path_length_m - total path distance traveled
+  2. time_s - navigation time elapsed
+  3. encounters - number of times within encounter_threshold (default 1.0 m)
+  4. personal_violations - times in personal space (< 1.2 m, Proxemics)
+  5. intimate_violations - times in intimate space (< 0.45 m, Proxemics)
+  6. min_ped_dist_m - global minimum distance to any pedestrian
+  7. mean_angular_acceleration - mean |Δω/Δt| (rad/s²), lower = smoother path
 """
 
 import csv
@@ -39,7 +39,7 @@ class DataCollector(Node):
     def __init__(self):
         super().__init__("data_collector")
 
-        # ── 参数 ─────────────────────────────────────────────────
+        # ── Parameters ─────────────────────────────────────────────────
         self.declare_parameter("mode", "social")
         self.declare_parameter("csv_file", "~/ros2_ws/experiment_results.csv")
         self.declare_parameter("encounter_threshold", 1.0)
@@ -87,7 +87,7 @@ class DataCollector(Node):
         else:
             self.csv_file = csv_base
 
-        # ── 状态变量 ─────────────────────────────────────────────
+        # ── State variables ─────────────────────────────────────────────
         self.robot_pos = None
         self.robot_pos_map = None
         self.ped_poses = []
@@ -111,7 +111,7 @@ class DataCollector(Node):
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
-        # ── 订阅 ─────────────────────────────────────────────────
+        # ── Subscribe ─────────────────────────────────────────────────
         self.create_subscription(Odometry,
             str(self.get_parameter("odom_topic").value), self.odom_cb, 10)
         self.create_subscription(PoseWithCovarianceStamped,
@@ -209,7 +209,7 @@ class DataCollector(Node):
             self.last_terminal_status = None
 
     def cmd_vel_cb(self, msg: TwistStamped):
-        """追踪角速度变化率（角加速度 |Δω/Δt|），量化路径平滑度。"""
+        """Track angular velocity change rate (angular acceleration |Δω/Δt|), quantify path smoothness."""
         if not self.is_navigating:
             return
         stamp = msg.header.stamp
@@ -225,7 +225,7 @@ class DataCollector(Node):
         self.prev_angular_z = omega
         self.prev_cmd_time = now
 
-    # ── 定时检测行人距离 ──────────────────────────────────────
+    # ── Periodic pedestrian distance check ──────────────────────────────────
 
     def record_loop(self):
         robot_pos_map = self.robot_pose_in_map()
@@ -265,7 +265,7 @@ class DataCollector(Node):
         self.personal_ped_indices = cur_personal
         self.intimate_ped_indices = cur_intimate
 
-    # ── 实验控制 ─────────────────────────────────────────────
+    # ── Experiment control ─────────────────────────────────────────────
 
     def start_experiment(self, mode=None):
         # Reset every per-run metric here. The node may live across retries or
@@ -340,19 +340,19 @@ def main(args=None):
     rclpy.init(args=args)
     node = DataCollector()
 
-    # SIGUSR1: 脚本可以发送此信号让 data_collector 立即保存当前数据
-    # Shell 将 result 写入 result_file，SIGUSR1 handler 读取它
+    # SIGUSR1: script can send this signal to make data_collector save data immediately
+    # Shell writes result to result_file, SIGUSR1 handler reads it
     def _sigusr1_handler(_signum, _frame):
         result = "script_stop"
         if node.result_file:
             try:
                 with open(node.result_file, "r") as f:
                     result = f.read().strip() or result
-                node.get_logger().info(f"SIGUSR1: 读取 result_file → '{result}'")
+                node.get_logger().info(f"SIGUSR1: read result_file → '{result}'")
             except Exception as e:
-                node.get_logger().warning(f"SIGUSR1: 读取 result_file 失败 ({e})，用 '{result}'")
+                node.get_logger().warning(f"SIGUSR1: failed to read result_file ({e}), use '{result}'")
         else:
-            node.get_logger().info("SIGUSR1: 无 result_file，用 'script_stop'")
+            node.get_logger().info("SIGUSR1: no result_file, use 'script_stop'")
         node.stop_experiment(result=result)
         if not node.is_navigating and node.exit_after_result:
             node.get_logger().info(
@@ -392,9 +392,9 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
     finally:
-        # 进程被杀时，如果实验还在进行中，强制保存已有数据
+        # When process exits, if experiment is still running, force-save collected data
         if node.is_navigating and not node.result_saved:
-            node.get_logger().info("进程退出，强制保存实验数据...")
+            node.get_logger().info("Process exiting, force-saving experiment data...")
             node.stop_experiment(result="interrupted")
         try:
             node.destroy_node()
