@@ -582,7 +582,8 @@ EXPERIMENTS=(
     "social_astar  true  true   true   astar"
     "social_smac   true  true   true   smac"
     "social_dstar      true  true   true   dstar"
-    "social_dstar_plus true  true   true   dstarplus"
+    "social_dstar_plus     true  true   true   dstarplus"
+    "social_dstar_plus_v2  true  true   true   dstarplusv2"
 )
 
 if [[ -n "$MODES" ]]; then

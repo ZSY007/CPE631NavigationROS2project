@@ -45,6 +45,7 @@ setup(
             'cpe631_map_republisher = cpe631_ros2.map_republisher:main',
             'ped_pose_extractor = cpe631_ros2.ped_pose_extractor:main',
             'social_nav_node = cpe631_ros2.social_nav_node:main',
+            'social_nav_node_v2 = cpe631_ros2.social_nav_node_v2:main',
             'data_collector = cpe631_ros2.data_collector:main',
             'goal_sender = cpe631_ros2.goal_sender:main',
             'replan_trigger = cpe631_ros2.replan_trigger:main',

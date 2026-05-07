@@ -56,10 +56,13 @@ def _select_nav2_params(
     social_dstar_params: str,
     social_smac_params: str,
     dstar_plus_params: str,
+    dstar_plus_v2_params: str,
 ):
     social_navigation = LaunchConfiguration('social_navigation').perform(context).lower()
     planner_variant = LaunchConfiguration('planner_variant').perform(context).lower()
-    if planner_variant == 'dstarplus':
+    if planner_variant == 'dstarplusv2':
+        params_file = dstar_plus_v2_params
+    elif planner_variant == 'dstarplus':
         params_file = dstar_plus_params
     elif social_navigation in ('1', 'true', 'yes', 'on'):
         if planner_variant == 'astar':
@@ -94,6 +97,7 @@ def generate_launch_description():
     nav2_social_dstar_params = os.path.join(pkg_share, 'param', 'nav2_social_dstar.yaml')
     nav2_social_smac_params = os.path.join(pkg_share, 'param', 'nav2_social_smac.yaml')
     nav2_dstar_plus_params = os.path.join(pkg_share, 'param', 'nav2_dstar_plus.yaml')
+    nav2_dstar_plus_v2_params = os.path.join(pkg_share, 'param', 'nav2_social_dstar_plus_v2.yaml')
     social_pose_bridge = os.path.join(pkg_share, 'param', 'social_pose_bridge.yaml')
     default_map = os.path.join(pkg_share, 'maps', 'cafe.yaml')
     # Reuse the known-good RViz layout / tools from the standard navigation launch.
@@ -142,12 +146,14 @@ def generate_launch_description():
             nav2_social_dstar_params,
             nav2_social_smac_params,
             nav2_dstar_plus_params,
+            nav2_dstar_plus_v2_params,
         ],
     )
     social_condition = IfCondition(PythonExpression([
         "'", navigation, "'.lower() == 'true' and '",
         enable_peds, "'.lower() == 'true' and '",
-        social_navigation, "'.lower() == 'true'",
+        social_navigation, "'.lower() == 'true' and '",
+        LaunchConfiguration('planner_variant'), "'.lower() != 'dstarplusv2'",
     ]))
     # Condition for pedestrian pose publishing: whenever peds are enabled
     peds_condition = IfCondition(PythonExpression([
@@ -453,9 +459,76 @@ def generate_launch_description():
         ],
     )
 
+    # social_nav_node_v2: only for the dstarplusv2 variant (proxemics + staleness decay)
+    social_nav_v2_condition = IfCondition(PythonExpression([
+        "'", navigation, "'.lower() == 'true' and '",
+        enable_peds, "'.lower() == 'true' and '",
+        LaunchConfiguration('planner_variant'), "'.lower() == 'dstarplusv2'",
+    ]))
+
+    social_nav_node_v2 = Node(
+        package='cpe631_ros2',
+        executable='social_nav_node_v2',
+        name='social_nav_node',
+        output='screen',
+        condition=social_nav_v2_condition,
+        parameters=[
+            {
+                'use_sim_time': use_sim_time,
+                'prediction_dt': 0.5,
+                'q_scale': 0.08,
+                'lateral_q_scale': 0.02,
+                'gamma': 0.72,
+                'publish_rate': 5.0,
+                'frame_id': 'map',
+                'input_topic': '/pedestrian_poses',
+                'output_topic': '/social_costmap',
+                'velocity_alpha': 0.35,
+                'velocity_tau': 0.35,
+                'track_timeout': 1.0,
+                'grid_resolution': 0.05,
+                'grid_width': 9.45,
+                'grid_height': 22.35,
+                'grid_origin_x': -5.999,
+                'grid_origin_y': -11.076,
+                'peak_cost': 85,
+                'cutoff_sigma': 2.5,
+                'longitudinal_sigma': 0.80,
+                'lateral_sigma': 0.35,
+                'speed_sigma_scale': 0.35,
+                'group_cost_ratio': 0.45,
+                'base_lookahead': 1.5,
+                'speed_lookahead_gain': 0.7,
+                'min_lookahead': 1.5,
+                'max_lookahead': 2.8,
+                'behind_ped_weight': 0.15,
+                'social_relevance_distance': 3.5,
+                'social_relevance_soft_margin': 2.0,
+                'min_relevance_weight': 0.10,
+                'instant_cost_ratio': 0.85,
+                'instant_sigma': 0.75,
+                'approach_cost_gain': 0.3,
+                'lethal_core_radius': 0.25,
+                'use_ped_orientation': True,
+                'ped_orientation_offset_deg': -90.0,
+                'robot_traj_hypotheses': 3,
+                'robot_traj_yaw_rate_span': 0.8,
+                'robot_prediction_min_speed': 0.12,
+                'velocity_uncertainty_gain': 0.35,
+                'max_uncertainty_scale': 1.6,
+                # v2 enhancements
+                'proxemics_direction_enabled': True,
+                'proxemics_front_gain': 0.4,
+                'proxemics_back_gain': 0.3,
+                'staleness_decay_enabled': True,
+                'staleness_decay_rate': 0.5,
+            }
+        ],
+    )
+
     dstar_plus_condition = IfCondition(PythonExpression([
         "'", navigation, "'.lower() == 'true' and '",
-        LaunchConfiguration('planner_variant'), "'.lower() == 'dstarplus'",
+        LaunchConfiguration('planner_variant'), "'.lower() in ('dstarplus', 'dstarplusv2')",
     ]))
 
     replan_trigger_node = Node(
@@ -539,6 +612,7 @@ def generate_launch_description():
         ped_pose_extractor,
         peds_manager,
         social_nav_node,
+        social_nav_node_v2,
         replan_trigger_node,
         map_republisher,
         rviz,
